@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Página inicial del proyecto HTML y Tailwind CSS."
+    />
+    <title>Mi primer sitio web</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="min-h-screen bg-slate-50 text-slate-900">
+    <header class="border-b border-slate-200 bg-white">
+      <div class="mx-auto max-w-5xl px-6 py-4">
+        <a class="text-lg font-semibold tracking-tight" href="/">Mi sitio web</a>
+      </div>
+    </header>
+
+    <main class="mx-auto flex min-h-[calc(100vh-8rem)] max-w-5xl items-center px-6 py-16">
+      <section class="max-w-2xl" aria-labelledby="welcome-title">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-indigo-600">
+          HTML + Tailwind CSS
+        </p>
+        <h1 id="welcome-title" class="text-4xl font-bold tracking-tight sm:text-6xl">
+          ¡Hola, mundo!
+        </h1>
+        <p class="mt-6 text-lg leading-8 text-slate-600">
+          Este es el punto de partida de tu sitio web. Edita este contenido y dale
+          forma a tu proyecto usando HTML y Tailwind CSS.
+        </p>
+        <a
+          class="mt-8 inline-flex rounded-lg bg-indigo-600 px-5 py-3 font-semibold text-white transition hover:bg-indigo-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          href="https://tailwindcss.com/docs"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Explorar Tailwind CSS
+        </a>
+      </section>
+    </main>
+
+    <footer class="border-t border-slate-200 bg-white">
+      <div class="mx-auto max-w-5xl px-6 py-4 text-sm text-slate-500">
+        Hecho con HTML y Tailwind CSS.
+      </div>
+    </footer>
+  </body>
+</html>
