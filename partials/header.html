@@ -1,0 +1,33 @@
+<div class="bg-[#67745d] px-4 py-2 text-center text-[10px] font-medium uppercase tracking-[.18em] text-white sm:text-xs">
+  Envío gratuito en pedidos superiores a 100 € <span aria-hidden="true">·</span> Hecho para durar
+</div>
+<header class="sticky top-0 z-40 border-b border-[#e6e3dc] bg-[#faf9f6]/95 backdrop-blur">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+    <a href="index.html" class="focus-ring font-serif text-2xl font-semibold tracking-[.2em]" aria-label="Senda, página de inicio">SENDA<span class="text-[#67745d]">.</span></a>
+
+    <nav class="hidden items-center gap-8 text-sm md:flex" aria-label="Navegación principal">
+      <a href="index.html" data-nav-link class="nav-link focus-ring transition-colors hover:text-[#67745d]">Inicio</a>
+      <a href="catalogo.html" data-nav-link class="nav-link focus-ring transition-colors hover:text-[#67745d]">Colección</a>
+      <a href="index.html#filosofia" data-nav-link class="nav-link focus-ring transition-colors hover:text-[#67745d]">Nuestra filosofía</a>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <a href="catalogo.html" class="focus-ring hidden text-sm transition-colors hover:text-[#67745d] sm:inline">Buscar</a>
+      <a href="carrito.html" class="focus-ring inline-flex items-center gap-2 text-sm" aria-label="Ver bolsa de compra">
+        <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16l-1.5 13h-13L4 7Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
+        <span class="hidden sm:inline">Bolsa</span><span data-cart-count class="min-w-5 rounded-full bg-[#67745d] px-1.5 py-0.5 text-center text-[10px] text-white">0</span>
+      </a>
+      <button type="button" class="focus-ring rounded border border-[#e6e3dc] p-2 md:hidden" data-menu-button aria-expanded="false" aria-controls="mobile-navigation" aria-label="Abrir menú">
+        <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav id="mobile-navigation" data-mobile-menu class="hidden border-t border-[#e6e3dc] bg-[#faf9f6] px-5 py-4 md:hidden" aria-label="Navegación móvil">
+    <div class="mx-auto flex max-w-7xl flex-col gap-4 text-sm">
+      <a href="index.html" data-nav-link class="focus-ring">Inicio</a>
+      <a href="catalogo.html" data-nav-link class="focus-ring">Colección</a>
+      <a href="index.html#filosofia" data-nav-link class="focus-ring">Nuestra filosofía</a>
+      <a href="carrito.html" class="focus-ring">Bolsa de compra</a>
+    </div>
+  </nav>
+</header>

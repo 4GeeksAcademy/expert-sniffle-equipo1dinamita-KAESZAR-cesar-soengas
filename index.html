@@ -3,194 +3,131 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Descubre Senda: prendas esenciales, diseño consciente y materiales seleccionados para acompañarte cada día. Compra la nueva colección online." />
-    <meta name="theme-color" content="#f7f5f0" />
+    <meta name="description" content="Descubre la nueva colección de Senda: prendas esenciales, materiales naturales y diseño consciente para acompañarte cada día." />
+    <meta name="theme-color" content="#faf9f6" />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
     <meta property="og:title" content="SENDA — Vestir con intención" />
-    <meta property="og:description" content="Prendas esenciales hechas para durar. Descubre la nueva colección de Senda." />
+    <meta property="og:description" content="Prendas esenciales hechas para durar. Descubre los nuevos lanzamientos de Senda." />
     <meta property="og:image" content="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=85" />
-    <link rel="canonical" href="https://senda.example/" />
     <title>SENDA — Moda consciente, prendas para durar</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
-      :root { color-scheme: light; --ink:#20231f; --paper:#f7f5f0; --olive:#68715c; --line:#deded6; }
-      html { scroll-behavior:smooth; }
-      body { background:var(--paper); color:var(--ink); font-family:Arial,Helvetica,sans-serif; }
-      .serif { font-family:Georgia,'Times New Roman',serif; }
-      .view[hidden] { display:none; }
-      .focus-ring:focus-visible { outline:2px solid #68715c; outline-offset:4px; }
-      .product-image { aspect-ratio:4/5; object-fit:cover; }
-      .hero-image { background-image:linear-gradient(90deg,rgba(23,26,22,.58),rgba(23,26,22,.04)),url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=2000&q=88'); background-size:cover; background-position:center 43%; }
-      .announcement { background:#68715c; }
-      input, select { accent-color:#68715c; }
-      @media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior:auto !important; transition-duration:.01ms !important; } }
+      :root { color-scheme: light; }
+      html { scroll-behavior: smooth; }
+      body { background: #faf9f6; color: #20231f; font-family: Arial, Helvetica, sans-serif; }
+      .font-serif { font-family: Georgia, 'Times New Roman', serif; }
+      .focus-ring:focus-visible { outline: 2px solid #67745d; outline-offset: 4px; }
+      .hero-image { background-image: linear-gradient(90deg, rgba(24,27,23,.59), rgba(24,27,23,.05)), url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=2200&q=88'); background-size: cover; background-position: center 43%; }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
     </style>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"ClothingStore","name":"Senda","description":"Moda consciente, prendas esenciales y diseño atemporal.","priceRange":"€€"}
+    </script>
   </head>
   <body class="min-h-screen antialiased">
     <a href="#contenido" class="focus-ring sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-white focus:px-4 focus:py-3">Saltar al contenido</a>
-    <div class="announcement px-4 py-2 text-center text-xs tracking-[.12em] text-white">ENVÍO GRATIS EN PEDIDOS SUPERIORES A 100 € · DEVOLUCIONES FÁCILES</div>
-    <header class="sticky top-0 z-30 border-b border-[#deded6] bg-[#f7f5f0]/95 backdrop-blur">
-      <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
-        <a class="focus-ring serif text-2xl font-bold tracking-[.2em]" href="#inicio" aria-label="Senda, ir al inicio">SENDA<span class="text-[#68715c]">.</span></a>
-        <nav aria-label="Navegación principal" class="hidden items-center gap-8 text-sm md:flex">
-          <a class="focus-ring hover:text-[#68715c]" href="#inicio">Inicio</a>
-          <a class="focus-ring hover:text-[#68715c]" href="#catalogo">Colección</a>
-          <a class="focus-ring hover:text-[#68715c]" href="#historia">Nuestra filosofía</a>
-        </nav>
-        <div class="flex items-center gap-4">
-          <a href="#catalogo" class="focus-ring hidden text-sm sm:inline">Buscar prendas</a>
-          <a href="#carrito" class="focus-ring relative inline-flex items-center gap-2 text-sm" aria-label="Ver carrito, productos: 0">
-            <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16l-1.5 13h-13L4 7Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
-            <span class="hidden sm:inline">Bolsa</span><span id="cart-count" class="rounded-full bg-[#68715c] px-2 py-0.5 text-xs text-white">0</span>
-          </a>
-          <button id="menu-button" class="focus-ring rounded border border-[#deded6] p-2 md:hidden" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
-            <svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-          </button>
-        </div>
-      </div>
-      <nav id="mobile-menu" aria-label="Navegación móvil" class="hidden border-t border-[#deded6] bg-[#f7f5f0] px-5 py-4 md:hidden">
-        <div class="flex flex-col gap-4 text-sm"><a href="#inicio">Inicio</a><a href="#catalogo">Colección</a><a href="#historia">Nuestra filosofía</a></div>
-      </nav>
-    </header>
+
+    <div id="site-header" data-partial="partials/header.html"></div>
 
     <main id="contenido">
-      <section id="inicio" class="view" aria-labelledby="home-title">
-        <div class="hero-image flex min-h-[600px] items-center text-white md:min-h-[690px]">
-          <div class="mx-auto w-full max-w-7xl px-6 py-20 md:px-10">
-            <p class="mb-5 text-xs uppercase tracking-[.25em]">Colección otoño · invierno</p>
-            <h1 id="home-title" class="serif max-w-2xl text-5xl leading-[1.05] md:text-7xl">Menos, pero mejor.</h1>
-            <p class="mt-6 max-w-md text-base leading-7 text-white/90 md:text-lg">Prendas honestas, formas atemporales y materiales que se sienten bien. Diseñadas para quedarse.</p>
-            <a href="#catalogo" class="focus-ring mt-9 inline-flex items-center gap-3 bg-white px-6 py-4 text-sm font-semibold text-[#20231f] transition hover:bg-[#e8e8df]">Descubre la colección <span aria-hidden="true">→</span></a>
-          </div>
+      <section aria-labelledby="hero-title" class="hero-image relative flex min-h-[570px] items-center text-white sm:min-h-[650px] lg:min-h-[710px]">
+        <div class="mx-auto w-full max-w-7xl px-6 py-20 sm:px-10 lg:px-12">
+          <p class="mb-5 text-[10px] font-medium uppercase tracking-[.28em] sm:text-xs">Nueva colección · otoño / invierno</p>
+          <h1 id="hero-title" class="font-serif max-w-2xl text-5xl leading-[1.04] sm:text-6xl lg:text-7xl">Menos, pero<br class="hidden sm:block"> mejor.</h1>
+          <p class="mt-6 max-w-md text-sm leading-7 text-white/90 sm:text-base">Prendas honestas, formas atemporales y materiales que se sienten bien. Diseñadas para quedarse.</p>
+          <a href="catalogo.html" class="focus-ring mt-8 inline-flex items-center gap-4 bg-white px-6 py-4 text-xs font-semibold text-[#20231f] transition hover:bg-[#ecebe4] sm:text-sm">Descubre la colección <span aria-hidden="true">→</span></a>
         </div>
-        <section class="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24" aria-labelledby="featured-title">
-          <div class="mb-8 flex items-end justify-between gap-4"><div><p class="text-xs uppercase tracking-[.2em] text-[#68715c]">Favoritos de la temporada</p><h2 id="featured-title" class="serif mt-2 text-3xl md:text-4xl">Piezas para cada día</h2></div><a href="#catalogo" class="focus-ring hidden text-sm underline underline-offset-4 sm:inline">Ver toda la colección</a></div>
-          <div class="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-4 md:gap-6">
-            <article class="group"><button class="product-link focus-ring block w-full text-left" data-product="camisa" aria-label="Ver Camisa Lino, 89 euros"><img class="product-image w-full bg-[#e8e4dc] transition duration-300 group-hover:opacity-90" src="https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=720&q=80" alt="Camisa blanca de lino de corte relajado" loading="lazy"><h3 class="mt-4 text-sm">Camisa Lino</h3><p class="mt-1 text-sm text-[#66685f]">89 €</p></button></article>
-            <article class="group"><button class="product-link focus-ring block w-full text-left" data-product="abrigo" aria-label="Ver Abrigo Siena, 189 euros"><img class="product-image w-full bg-[#e8e4dc] transition duration-300 group-hover:opacity-90" src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=720&q=80" alt="Abrigo largo camel de líneas minimalistas" loading="lazy"><h3 class="mt-4 text-sm">Abrigo Siena</h3><p class="mt-1 text-sm text-[#66685f]">189 €</p></button></article>
-            <article class="group"><button class="product-link focus-ring block w-full text-left" data-product="jersey" aria-label="Ver Jersey Alba, 119 euros"><img class="product-image w-full bg-[#e8e4dc] transition duration-300 group-hover:opacity-90" src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=720&q=80" alt="Jersey de punto beige de textura suave" loading="lazy"><h3 class="mt-4 text-sm">Jersey Alba</h3><p class="mt-1 text-sm text-[#66685f]">119 €</p></button></article>
-            <article class="group"><button class="product-link focus-ring block w-full text-left" data-product="pantalon" aria-label="Ver Pantalón Tierra, 99 euros"><img class="product-image w-full bg-[#e8e4dc] transition duration-300 group-hover:opacity-90" src="https://images.unsplash.com/photo-1506629905607-d9b297d42e59?auto=format&fit=crop&w=720&q=80" alt="Pantalón de vestir en tono tierra" loading="lazy"><h3 class="mt-4 text-sm">Pantalón Tierra</h3><p class="mt-1 text-sm text-[#66685f]">99 €</p></button></article>
+        <p class="absolute bottom-8 right-8 hidden text-[10px] uppercase tracking-[.2em] text-white/80 lg:block">Vestir con intención</p>
+      </section>
+
+      <section aria-labelledby="new-arrivals-title" class="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:py-24">
+        <div class="mb-8 flex items-end justify-between gap-4 sm:mb-10">
+          <div>
+            <p class="text-[10px] font-medium uppercase tracking-[.22em] text-[#67745d] sm:text-xs">Recién llegados</p>
+            <h2 id="new-arrivals-title" class="font-serif mt-2 text-3xl sm:text-4xl">Nuevos lanzamientos</h2>
           </div>
-        </section>
-        <section id="historia" class="bg-[#e9e8df] px-5 py-16 md:px-8 md:py-24" aria-labelledby="story-title"><div class="mx-auto grid max-w-7xl gap-8 md:grid-cols-2 md:items-center"><div><p class="text-xs uppercase tracking-[.2em] text-[#68715c]">Vestir con intención</p><h2 id="story-title" class="serif mt-3 text-4xl leading-tight md:text-5xl">Un armario que respira. Un mundo que también.</h2></div><div><p class="max-w-xl leading-7 text-[#55584f]">Creemos en comprar menos y elegir mejor. Por eso creamos colecciones pequeñas, con fibras naturales y una atención cuidadosa a cada detalle. Ropa para vivir, no solo para estrenar.</p><a href="#catalogo" class="focus-ring mt-6 inline-block text-sm font-semibold underline underline-offset-4">Conoce nuestras piezas →</a></div></div></section>
-      </section>
-
-      <section id="catalogo" class="view" aria-labelledby="catalog-title" hidden>
-        <div class="mx-auto max-w-7xl px-5 py-12 md:px-8 md:py-16">
-          <p class="text-xs uppercase tracking-[.2em] text-[#68715c]">Hecho para acompañarte</p><h1 id="catalog-title" class="serif mt-3 text-4xl md:text-5xl">La colección</h1><p class="mt-4 max-w-xl leading-7 text-[#66685f]">Siluetas fáciles, tejidos naturales y tonos que combinan entre sí. Encuentra tus nuevos esenciales.</p>
-          <div class="mt-8 flex flex-wrap items-center justify-between gap-4 border-y border-[#deded6] py-4"><div class="flex gap-2" aria-label="Filtrar productos"><button class="filter-button focus-ring rounded-full border border-[#68715c] bg-[#68715c] px-4 py-2 text-xs text-white" data-filter="all" aria-pressed="true">Todo</button><button class="filter-button focus-ring rounded-full border border-[#deded6] px-4 py-2 text-xs" data-filter="ropa" aria-pressed="false">Ropa</button><button class="filter-button focus-ring rounded-full border border-[#deded6] px-4 py-2 text-xs" data-filter="punto" aria-pressed="false">Punto</button></div><p class="text-sm text-[#66685f]">4 piezas</p></div>
-          <div class="mt-7 grid grid-cols-2 gap-x-4 gap-y-9 md:grid-cols-3 md:gap-7">
-            <article class="catalog-card group" data-category="ropa"><button class="product-link focus-ring block w-full text-left" data-product="camisa"><img class="product-image w-full bg-[#e8e4dc] transition group-hover:opacity-90" src="https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=900&q=85" alt="Camisa Lino blanca, prenda de lino de corte relajado" loading="lazy"><span class="mt-4 block text-sm">Camisa Lino</span><span class="mt-1 block text-sm text-[#66685f]">89 €</span></button><button class="quick-add focus-ring mt-3 text-xs font-semibold underline underline-offset-4" data-add="camisa">Añadir a la bolsa</button></article>
-            <article class="catalog-card group" data-category="ropa"><button class="product-link focus-ring block w-full text-left" data-product="abrigo"><img class="product-image w-full bg-[#e8e4dc] transition group-hover:opacity-90" src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=900&q=85" alt="Abrigo Siena camel, silueta larga y clásica" loading="lazy"><span class="mt-4 block text-sm">Abrigo Siena</span><span class="mt-1 block text-sm text-[#66685f]">189 €</span></button><button class="quick-add focus-ring mt-3 text-xs font-semibold underline underline-offset-4" data-add="abrigo">Añadir a la bolsa</button></article>
-            <article class="catalog-card group" data-category="punto"><button class="product-link focus-ring block w-full text-left" data-product="jersey"><img class="product-image w-full bg-[#e8e4dc] transition group-hover:opacity-90" src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=900&q=85" alt="Jersey Alba beige de punto suave" loading="lazy"><span class="mt-4 block text-sm">Jersey Alba</span><span class="mt-1 block text-sm text-[#66685f]">119 €</span></button><button class="quick-add focus-ring mt-3 text-xs font-semibold underline underline-offset-4" data-add="jersey">Añadir a la bolsa</button></article>
-            <article class="catalog-card group" data-category="ropa"><button class="product-link focus-ring block w-full text-left" data-product="pantalon"><img class="product-image w-full bg-[#e8e4dc] transition group-hover:opacity-90" src="https://images.unsplash.com/photo-1506629905607-d9b297d42e59?auto=format&fit=crop&w=900&q=85" alt="Pantalón Tierra de vestir en color natural" loading="lazy"><span class="mt-4 block text-sm">Pantalón Tierra</span><span class="mt-1 block text-sm text-[#66685f]">99 €</span></button><button class="quick-add focus-ring mt-3 text-xs font-semibold underline underline-offset-4" data-add="pantalon">Añadir a la bolsa</button></article>
-          </div>
+          <a href="catalogo.html" class="focus-ring hidden pb-1 text-xs underline underline-offset-4 sm:inline-block">Ver toda la colección <span aria-hidden="true">→</span></a>
         </div>
-      </section>
 
-      <section id="producto" class="view" aria-labelledby="product-title" hidden>
-        <div class="mx-auto max-w-7xl px-5 py-8 md:px-8 md:py-12"><p class="mb-6 text-sm text-[#66685f]"><a href="#catalogo" class="focus-ring underline underline-offset-4">Colección</a><span aria-hidden="true"> / </span><span id="breadcrumb-product">Camisa Lino</span></p>
-          <div class="grid gap-8 md:grid-cols-2 md:gap-16"><img id="detail-image" class="aspect-[4/5] w-full bg-[#e8e4dc] object-cover" src="https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=1100&q=85" alt="Camisa blanca de lino de corte relajado"><div class="py-2 md:py-10"><p class="text-xs uppercase tracking-[.2em] text-[#68715c]">Diseño esencial · Hecho con cuidado</p><h1 id="product-title" class="serif mt-4 text-4xl md:text-5xl">Camisa Lino</h1><p id="detail-price" class="mt-4 text-lg">89 €</p><p id="detail-description" class="mt-6 max-w-lg leading-7 text-[#5f6259]">Una camisa ligera de lino europeo, con caída natural y corte relajado. Un básico versátil para llevar durante todo el año.</p><div class="mt-8"><label for="size" class="mb-3 block text-sm font-medium">Selecciona tu talla</label><select id="size" class="focus-ring w-full max-w-xs border border-[#c9c9c0] bg-transparent px-4 py-3 text-sm"><option value="S">S</option><option value="M" selected>M</option><option value="L">L</option><option value="XL">XL</option></select><p class="mt-2 text-xs text-[#66685f]">¿Dudas con la talla? Nuestro ajuste es fiel a la medida.</p></div><button id="add-to-cart" class="focus-ring mt-7 w-full max-w-md bg-[#20231f] px-6 py-4 text-sm font-semibold text-white transition hover:bg-[#42483a]">Añadir a la bolsa · 89 €</button><p class="mt-6 text-sm leading-6 text-[#66685f]">Envío gratis desde 100 €. Cambios y devoluciones fáciles durante 30 días.</p><div class="mt-8 border-t border-[#deded6] pt-5"><h2 class="text-sm font-semibold">Materiales y cuidado</h2><p class="mt-2 text-sm leading-6 text-[#66685f]">100 % lino europeo certificado. Lavar en frío con colores similares y secar al aire para alargar la vida de la prenda.</p></div></div></div>
+        <div class="grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-4">
+          <article class="group">
+            <a href="producto.html?item=camisa-lino" class="focus-ring block">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=800&q=85" alt="Camisa blanca de lino de corte relajado" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"><span class="absolute left-3 top-3 bg-[#faf9f6] px-2.5 py-1 text-[9px] uppercase tracking-[.14em]">Nuevo</span></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h3 class="text-sm">Camisa Lino</h3><p class="mt-1 text-xs text-[#73746d]">Blanco natural</p></div><p class="shrink-0 text-sm">89 €</p></div>
+            </a>
+          </article>
+          <article class="group">
+            <a href="producto.html?item=abrigo-siena" class="focus-ring block">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=85" alt="Abrigo largo Siena en tono camel" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"><span class="absolute left-3 top-3 bg-[#faf9f6] px-2.5 py-1 text-[9px] uppercase tracking-[.14em]">Nuevo</span></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h3 class="text-sm">Abrigo Siena</h3><p class="mt-1 text-xs text-[#73746d]">Camel</p></div><p class="shrink-0 text-sm">189 €</p></div>
+            </a>
+          </article>
+          <article class="group">
+            <a href="producto.html?item=jersey-alba" class="focus-ring block">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=800&q=85" alt="Jersey de punto Alba en color avena" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"><span class="absolute left-3 top-3 bg-[#faf9f6] px-2.5 py-1 text-[9px] uppercase tracking-[.14em]">Nuevo</span></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h3 class="text-sm">Jersey Alba</h3><p class="mt-1 text-xs text-[#73746d]">Avena</p></div><p class="shrink-0 text-sm">119 €</p></div>
+            </a>
+          </article>
+          <article class="group">
+            <a href="producto.html?item=pantalon-tierra" class="focus-ring block">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1506629905607-d9b297d42e59?auto=format&fit=crop&w=800&q=85" alt="Pantalón recto Tierra en tono natural" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"><span class="absolute left-3 top-3 bg-[#faf9f6] px-2.5 py-1 text-[9px] uppercase tracking-[.14em]">Nuevo</span></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h3 class="text-sm">Pantalón Tierra</h3><p class="mt-1 text-xs text-[#73746d]">Arena</p></div><p class="shrink-0 text-sm">99 €</p></div>
+            </a>
+          </article>
         </div>
+        <a href="catalogo.html" class="focus-ring mt-8 inline-flex border-b border-[#20231f] pb-1 text-xs sm:hidden">Ver toda la colección <span class="ml-2" aria-hidden="true">→</span></a>
       </section>
 
-      <section id="carrito" class="view" aria-labelledby="cart-title" hidden>
-        <div class="mx-auto max-w-7xl px-5 py-12 md:px-8 md:py-16"><p class="text-xs uppercase tracking-[.2em] text-[#68715c]">Tu selección</p><h1 id="cart-title" class="serif mt-3 text-4xl md:text-5xl">La bolsa</h1><div id="cart-content" class="mt-9"></div></div>
-      </section>
-
-      <section id="checkout" class="view" aria-labelledby="checkout-title" hidden>
-        <div class="mx-auto max-w-7xl px-5 py-12 md:px-8 md:py-16"><p class="text-xs uppercase tracking-[.2em] text-[#68715c]">Ya casi es tuyo</p><h1 id="checkout-title" class="serif mt-3 text-4xl md:text-5xl">Finalizar compra</h1><div class="mt-8 grid gap-10 md:grid-cols-[1.4fr_.8fr] md:gap-16"><form id="checkout-form" class="space-y-8"><fieldset><legend class="serif mb-5 text-2xl">Datos de contacto</legend><label class="mb-2 block text-sm" for="email">Correo electrónico</label><input id="email" name="email" type="email" autocomplete="email" required class="focus-ring w-full border border-[#c9c9c0] bg-transparent px-4 py-3" placeholder="tu@correo.com"></fieldset><fieldset><legend class="serif mb-5 text-2xl">Dirección de envío</legend><div class="grid gap-4 sm:grid-cols-2"><div><label class="mb-2 block text-sm" for="name">Nombre</label><input id="name" name="name" autocomplete="given-name" required class="focus-ring w-full border border-[#c9c9c0] bg-transparent px-4 py-3"></div><div><label class="mb-2 block text-sm" for="surname">Apellidos</label><input id="surname" name="surname" autocomplete="family-name" required class="focus-ring w-full border border-[#c9c9c0] bg-transparent px-4 py-3"></div></div><div class="mt-4"><label class="mb-2 block text-sm" for="address">Dirección</label><input id="address" name="address" autocomplete="street-address" required class="focus-ring w-full border border-[#c9c9c0] bg-transparent px-4 py-3"></div><div class="mt-4 grid gap-4 sm:grid-cols-2"><div><label class="mb-2 block text-sm" for="city">Ciudad</label><input id="city" name="city" autocomplete="address-level2" required class="focus-ring w-full border border-[#c9c9c0] bg-transparent px-4 py-3"></div><div><label class="mb-2 block text-sm" for="postal">Código postal</label><input id="postal" name="postal" autocomplete="postal-code" required inputmode="numeric" class="focus-ring w-full border border-[#c9c9c0] bg-transparent px-4 py-3"></div></div><div class="mt-4"><label class="mb-2 block text-sm" for="country">País</label><select id="country" name="country" autocomplete="country-name" class="focus-ring w-full border border-[#c9c9c0] bg-transparent px-4 py-3"><option>España</option><option>Portugal</option><option>Francia</option></select></div></fieldset><fieldset><legend class="serif mb-4 text-2xl">Pago de prueba</legend><p class="text-sm leading-6 text-[#66685f]">Este prototipo no procesa pagos reales. En una tienda publicada, aquí se integraría una pasarela de pago segura.</p><label class="mt-4 flex items-start gap-3 text-sm"><input type="checkbox" required class="mt-1"><span>Acepto las condiciones de compra y la política de privacidad.</span></label></fieldset><button class="focus-ring w-full bg-[#20231f] px-6 py-4 text-sm font-semibold text-white transition hover:bg-[#42483a]" type="submit">Confirmar pedido de prueba</button><p id="checkout-message" class="text-sm text-[#68715c]" role="status" aria-live="polite"></p></form><aside class="h-fit bg-[#eeede6] p-6 md:p-8" aria-labelledby="summary-title"><h2 id="summary-title" class="serif text-2xl">Resumen del pedido</h2><div id="checkout-summary" class="mt-5"></div></aside></div></div>
+      <section id="filosofia" aria-labelledby="philosophy-title" class="bg-[#e9e9e1] px-5 py-16 sm:px-8 sm:py-20 lg:py-24">
+        <div class="mx-auto grid max-w-7xl gap-8 md:grid-cols-2 md:items-center md:gap-14">
+          <div><p class="text-[10px] font-medium uppercase tracking-[.22em] text-[#67745d] sm:text-xs">Vestir con intención</p><h2 id="philosophy-title" class="font-serif mt-3 max-w-xl text-3xl leading-tight sm:text-4xl lg:text-5xl">Un armario que respira. Un mundo que también.</h2></div>
+          <div><p class="max-w-xl text-sm leading-7 text-[#5e6158] sm:text-base">Creemos en comprar menos y elegir mejor. Por eso creamos colecciones pequeñas, con fibras naturales y una atención cuidadosa a cada detalle. Ropa para vivir, no solo para estrenar.</p><a href="catalogo.html" class="focus-ring mt-6 inline-flex text-xs font-semibold underline underline-offset-4">Conoce nuestras piezas <span class="ml-2" aria-hidden="true">→</span></a></div>
+        </div>
       </section>
     </main>
 
-    <footer class="mt-10 border-t border-[#deded6] bg-[#f1f0e9]">
-      <div class="mx-auto grid max-w-7xl gap-8 px-5 py-10 md:grid-cols-3 md:px-8"><div><a class="serif text-xl font-bold tracking-[.2em]" href="#inicio">SENDA.</a><p class="mt-3 max-w-xs text-sm leading-6 text-[#66685f]">Moda consciente para moverte a tu manera. Diseñada para durar, creada para vivir.</p></div><div><h2 class="text-xs font-semibold uppercase tracking-[.15em]">Servicio al cliente</h2><p class="mt-3 text-sm leading-7 text-[#66685f]">Envíos y devoluciones<br>Guía de tallas<br>Contacto: hola@senda.example</p></div><div><h2 class="text-xs font-semibold uppercase tracking-[.15em]">Síguenos</h2><p class="mt-3 text-sm text-[#66685f]">Novedades, historias y prendas hechas con intención.</p><a href="#catalogo" class="focus-ring mt-3 inline-block text-sm underline underline-offset-4">Explorar la colección</a></div></div>
-      <div class="border-t border-[#deded6] px-5 py-4 text-center text-xs text-[#66685f]">© 2026 Senda Studio · Prototipo de tienda online</div>
-    </footer>
-    <div id="announcement" class="sr-only" role="status" aria-live="polite"></div>
+    <div id="site-footer" data-partial="partials/footer.html" aria-label="Pie de página del sitio"></div>
+    <p id="site-status" class="sr-only" role="status" aria-live="polite"></p>
 
     <script>
-      const products = {
-        camisa: { name:'Camisa Lino', price:89, image:'https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=1100&q=85', alt:'Camisa blanca de lino de corte relajado', description:'Una camisa ligera de lino europeo, con caída natural y corte relajado. Un básico versátil para llevar durante todo el año.' },
-        abrigo: { name:'Abrigo Siena', price:189, image:'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1100&q=85', alt:'Abrigo largo camel de líneas minimalistas', description:'Un abrigo envolvente de líneas limpias y tono cálido. Una capa exterior atemporal, pensada para acompañar muchos inviernos.' },
-        jersey: { name:'Jersey Alba', price:119, image:'https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=1100&q=85', alt:'Jersey beige de punto suave', description:'Punto suave con una textura agradable y una silueta relajada. Una pieza cómoda para los días más frescos.' },
-        pantalon: { name:'Pantalón Tierra', price:99, image:'https://images.unsplash.com/photo-1506629905607-d9b297d42e59?auto=format&fit=crop&w=1100&q=85', alt:'Pantalón de vestir en tono tierra', description:'Pantalón de corte recto y caída fluida, fácil de combinar con tus prendas favoritas de temporada.' }
-      };
-      let selectedProduct = 'camisa';
-      let cart = JSON.parse(localStorage.getItem('senda-cart') || '[]');
-      const money = value => new Intl.NumberFormat('es-ES', { style:'currency', currency:'EUR', maximumFractionDigits:0 }).format(value);
-      const announcement = document.getElementById('announcement');
-      function announce(message) { announcement.textContent = message; }
-      function saveCart() { localStorage.setItem('senda-cart', JSON.stringify(cart)); updateCartCount(); renderCart(); }
-      function updateCartCount() {
-        const count = cart.reduce((sum, item) => sum + item.qty, 0);
-        document.getElementById('cart-count').textContent = count;
-        document.querySelector('[aria-label^="Ver carrito"]').setAttribute('aria-label', `Ver carrito, productos: ${count}`);
-      }
-      function openView() {
-        const id = location.hash.slice(1) || 'inicio';
-        const allowed = ['inicio','catalogo','producto','carrito','checkout'];
-        const view = allowed.includes(id) ? id : 'inicio';
-        document.querySelectorAll('.view').forEach(section => { section.hidden = section.id !== view; });
-        if (view === 'carrito') renderCart();
-        if (view === 'checkout') renderSummary();
-        document.getElementById('mobile-menu').classList.add('hidden');
-        document.getElementById('menu-button').setAttribute('aria-expanded','false');
-        window.scrollTo(0,0);
-      }
-      function showProduct(id) {
-        const item = products[id]; if (!item) return;
-        selectedProduct = id;
-        document.getElementById('product-title').textContent = item.name;
-        document.getElementById('breadcrumb-product').textContent = item.name;
-        document.getElementById('detail-price').textContent = money(item.price);
-        document.getElementById('detail-description').textContent = item.description;
-        document.getElementById('detail-image').src = item.image;
-        document.getElementById('detail-image').alt = item.alt;
-        document.getElementById('add-to-cart').textContent = `Añadir a la bolsa · ${money(item.price)}`;
-        location.hash = 'producto';
-      }
-      function addItem(id, size='M') {
-        const found = cart.find(item => item.id === id && item.size === size);
-        if (found) found.qty += 1; else cart.push({ id, size, qty:1 });
-        saveCart(); announce(`${products[id].name} añadida a la bolsa.`);
-      }
-      function renderCart() {
-        const container = document.getElementById('cart-content');
-        if (!cart.length) {
-          container.innerHTML = '<div class="border-y border-[#deded6] py-12 text-center"><p class="serif text-2xl">Tu bolsa está esperando.</p><p class="mt-3 text-sm text-[#66685f]">Descubre prendas esenciales hechas para durar.</p><a href="#catalogo" class="focus-ring mt-6 inline-flex bg-[#20231f] px-6 py-3 text-sm font-semibold text-white">Ver colección</a></div>';
-          return;
+      // Navbar y footer compartidos: al servir el sitio con python3 server.py se cargan como parciales HTML.
+      async function loadPartials() {
+        const slots = document.querySelectorAll('[data-partial]');
+        await Promise.all(Array.from(slots, async slot => {
+          try {
+            const response = await fetch(slot.dataset.partial);
+            if (!response.ok) throw new Error(`No se pudo cargar ${slot.dataset.partial}`);
+            slot.innerHTML = await response.text();
+          } catch (error) {
+            console.error(error);
+            document.getElementById('site-status').textContent = 'No se pudo cargar la navegación compartida. Ejecuta el servidor local del proyecto.';
+          }
+        }));
+        document.querySelectorAll('[data-year]').forEach(node => node.textContent = new Date().getFullYear());
+        const currentPage = location.pathname.split('/').pop() || 'index.html';
+        document.querySelectorAll('[data-nav-link]').forEach(link => {
+          const linkPage = link.getAttribute('href').split('#')[0] || 'index.html';
+          if (linkPage === currentPage) link.setAttribute('aria-current', 'page');
+        });
+        const menuButton = document.querySelector('[data-menu-button]');
+        const mobileMenu = document.querySelector('[data-mobile-menu]');
+        if (menuButton && mobileMenu) {
+          menuButton.addEventListener('click', () => {
+            const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+            menuButton.setAttribute('aria-expanded', String(!isOpen));
+            mobileMenu.classList.toggle('hidden', isOpen);
+          });
         }
-        const subtotal = cart.reduce((sum,item) => sum + products[item.id].price * item.qty, 0);
-        container.innerHTML = `<div class="grid gap-10 md:grid-cols-[1.4fr_.7fr]"><div class="divide-y divide-[#deded6]">${cart.map((item,index) => { const product=products[item.id]; return `<article class="flex gap-4 py-5"><img src="${product.image}" alt="${product.alt}" class="h-32 w-24 bg-[#e8e4dc] object-cover sm:h-40 sm:w-32"><div class="flex flex-1 flex-col justify-between sm:flex-row sm:items-start"><div><h2 class="font-medium">${product.name}</h2><p class="mt-2 text-sm text-[#66685f]">Talla: ${item.size}</p><p class="mt-2 text-sm">${money(product.price)}</p></div><div class="mt-4 flex items-center gap-3 sm:mt-0"><label class="sr-only" for="qty-${index}">Cantidad de ${product.name}</label><select id="qty-${index}" data-qty="${index}" class="focus-ring border border-[#c9c9c0] bg-transparent px-3 py-2 text-sm">${[1,2,3,4,5].map(n=>`<option value="${n}" ${n===item.qty?'selected':''}>${n}</option>`).join('')}</select><button class="focus-ring text-sm underline underline-offset-4" data-remove="${index}">Eliminar</button></div></div></article>`; }).join('')}</div><aside class="h-fit bg-[#eeede6] p-6 md:p-8"><h2 class="serif text-2xl">Resumen</h2><div class="mt-5 flex justify-between text-sm"><span>Subtotal</span><span>${money(subtotal)}</span></div><div class="mt-3 flex justify-between text-sm"><span>Envío</span><span>${subtotal >= 100 ? 'Gratis' : '5 €'}</span></div><div class="mt-5 flex justify-between border-t border-[#d4d3ca] pt-5 font-semibold"><span>Total estimado</span><span>${money(subtotal + (subtotal >= 100 ? 0 : 5))}</span></div><a href="#checkout" class="focus-ring mt-6 block bg-[#20231f] px-5 py-4 text-center text-sm font-semibold text-white hover:bg-[#42483a]">Continuar al pago</a><a href="#catalogo" class="focus-ring mt-4 block text-center text-sm underline underline-offset-4">Seguir comprando</a></aside></div>`;
-        container.querySelectorAll('[data-qty]').forEach(select => select.addEventListener('change', event => { cart[Number(event.target.dataset.qty)].qty = Number(event.target.value); saveCart(); }));
-        container.querySelectorAll('[data-remove]').forEach(button => button.addEventListener('click', event => { cart.splice(Number(event.currentTarget.dataset.remove),1); saveCart(); announce('Prenda eliminada de la bolsa.'); }));
+        try {
+          const cart = JSON.parse(localStorage.getItem('senda-cart') || '[]');
+          const count = cart.reduce((total, item) => total + (Number(item.qty) || 0), 0);
+          document.querySelectorAll('[data-cart-count]').forEach(node => node.textContent = count);
+        } catch (error) {
+          document.querySelectorAll('[data-cart-count]').forEach(node => node.textContent = '0');
+        }
       }
-      function renderSummary() {
-        const subtotal = cart.reduce((sum,item) => sum + products[item.id].price * item.qty, 0);
-        const shipping = subtotal >= 100 || subtotal === 0 ? 0 : 5;
-        document.getElementById('checkout-summary').innerHTML = cart.length ? `${cart.map(item=>`<div class="flex justify-between gap-3 border-b border-[#d4d3ca] py-3 text-sm"><span>${products[item.id].name} · ${item.size} × ${item.qty}</span><span>${money(products[item.id].price*item.qty)}</span></div>`).join('')}<div class="mt-4 flex justify-between text-sm"><span>Envío</span><span>${shipping ? money(shipping) : 'Gratis'}</span></div><div class="mt-4 flex justify-between border-t border-[#d4d3ca] pt-4 font-semibold"><span>Total</span><span>${money(subtotal+shipping)}</span></div>` : '<p class="mt-4 text-sm text-[#66685f]">Aún no hay productos. <a class="underline" href="#catalogo">Volver a la colección</a></p>';
-      }
-      document.querySelectorAll('.product-link').forEach(button => button.addEventListener('click', () => showProduct(button.dataset.product)));
-      document.querySelectorAll('[data-add]').forEach(button => button.addEventListener('click', () => { addItem(button.dataset.add); location.hash='carrito'; }));
-      document.getElementById('add-to-cart').addEventListener('click', () => { addItem(selectedProduct, document.getElementById('size').value); location.hash='carrito'; });
-      document.querySelectorAll('.filter-button').forEach(button => button.addEventListener('click', () => {
-        document.querySelectorAll('.filter-button').forEach(other => { other.setAttribute('aria-pressed','false'); other.classList.remove('bg-[#68715c]','text-white','border-[#68715c]'); });
-        button.setAttribute('aria-pressed','true'); button.classList.add('bg-[#68715c]','text-white','border-[#68715c]');
-        document.querySelectorAll('.catalog-card').forEach(card => { card.hidden = button.dataset.filter !== 'all' && card.dataset.category !== button.dataset.filter; });
-      }));
-      document.getElementById('menu-button').addEventListener('click', event => {
-        const menu=document.getElementById('mobile-menu'); const open=menu.classList.toggle('hidden') === false;
-        event.currentTarget.setAttribute('aria-expanded',String(open));
-      });
-      document.getElementById('checkout-form').addEventListener('submit', event => {
-        event.preventDefault();
-        if (!cart.length) { document.getElementById('checkout-message').textContent='Añade al menos una prenda antes de confirmar el pedido.'; return; }
-        document.getElementById('checkout-message').textContent='¡Gracias! Tu pedido de demostración se ha confirmado. No se ha realizado ningún cobro.';
-        cart=[]; saveCart(); renderSummary(); event.currentTarget.reset();
-      });
-      window.addEventListener('hashchange', openView);
-      updateCartCount(); openView();
+      loadPartials();
     </script>
   </body>
 </html>
