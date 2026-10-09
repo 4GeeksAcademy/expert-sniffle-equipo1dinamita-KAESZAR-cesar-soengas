@@ -43,27 +43,49 @@
 
         <div id="checkout-layout" class="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-14">
           <form id="checkout-form" class="space-y-8" novalidate>
-            <fieldset>
-              <legend class="font-serif text-2xl">Datos de entrega</legend>
-              <div class="mt-5 grid gap-5 sm:grid-cols-2">
-                <div class="sm:col-span-2"><label for="full-name" class="mb-2 block text-xs font-medium">Nombre completo *</label><input id="full-name" name="name" autocomplete="name" required class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
-                <div><label for="email" class="mb-2 block text-xs font-medium">Correo electrónico *</label><input id="email" name="email" type="email" autocomplete="email" required class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
-                <div><label for="phone" class="mb-2 block text-xs font-medium">Teléfono</label><input id="phone" name="phone" type="tel" autocomplete="tel" class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
-                <div class="sm:col-span-2"><label for="address" class="mb-2 block text-xs font-medium">Dirección *</label><input id="address" name="address" autocomplete="street-address" required class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
-                <div><label for="postal-code" class="mb-2 block text-xs font-medium">Código postal *</label><input id="postal-code" name="postalCode" autocomplete="postal-code" required class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
-                <div><label for="city" class="mb-2 block text-xs font-medium">Ciudad *</label><input id="city" name="city" autocomplete="address-level2" required class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
-                <div class="sm:col-span-2"><label for="region" class="mb-2 block text-xs font-medium">Provincia *</label><input id="region" name="region" autocomplete="address-level1" required class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
-              </div>
-            </fieldset>
+            <ol class="mb-8 grid grid-cols-3 gap-2" aria-label="Pasos del proceso de compra">
+              <li><button type="button" class="checkout-step focus-ring w-full border-b-2 border-[#67745d] pb-3 text-left" data-step-indicator="1" aria-current="step"><span class="block text-[10px] uppercase tracking-[.12em] text-[#67745d]">Paso 1</span><span class="mt-1 block text-xs font-medium">Datos personales</span></button></li>
+              <li><button type="button" class="checkout-step focus-ring w-full border-b-2 border-[#d7d6ce] pb-3 text-left text-[#73746d]" data-step-indicator="2" aria-label="Paso 2: Dirección de entrega" disabled><span class="block text-[10px] uppercase tracking-[.12em]">Paso 2</span><span class="mt-1 block text-xs font-medium">Dirección</span></button></li>
+              <li><button type="button" class="checkout-step focus-ring w-full border-b-2 border-[#d7d6ce] pb-3 text-left text-[#73746d]" data-step-indicator="3" aria-label="Paso 3: Pago con tarjeta" disabled><span class="block text-[10px] uppercase tracking-[.12em]">Paso 3</span><span class="mt-1 block text-xs font-medium">Pago</span></button></li>
+            </ol>
 
-            <fieldset>
-              <legend class="font-serif text-2xl">Método de pago</legend>
-              <p class="mt-2 text-xs leading-5 text-[#676960]">Simulación de pago para el prototipo. No introduzcas datos de tarjeta ni se realizará ningún cargo.</p>
-              <label for="payment-method" class="mb-2 mt-5 block text-xs font-medium">Selecciona un método *</label>
-              <select id="payment-method" name="payment" required class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm sm:max-w-sm"><option value="">Elige una opción</option><option value="card-demo">Tarjeta (simulación)</option><option value="transfer-demo">Transferencia (simulación)</option></select>
-            </fieldset>
+            <section class="checkout-panel space-y-5" data-step-panel="1" aria-labelledby="personal-title">
+              <div><p class="text-[10px] font-medium uppercase tracking-[.18em] text-[#67745d]">Paso 1 de 3</p><h2 id="personal-title" tabindex="-1" class="font-serif mt-2 text-2xl">Datos personales</h2><p class="mt-2 text-xs text-[#676960]">¿A quién preparamos este pedido?</p></div>
+              <div class="grid gap-5 sm:grid-cols-2">
+                <div class="sm:col-span-2"><label for="full-name" class="mb-2 block text-xs font-medium">Nombre completo *</label><input id="full-name" name="name" autocomplete="name" required data-required-step="1" class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
+                <div><label for="email" class="mb-2 block text-xs font-medium">Correo electrónico *</label><input id="email" name="email" type="email" autocomplete="email" required data-required-step="1" class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
+                <div><label for="phone" class="mb-2 block text-xs font-medium">Teléfono</label><input id="phone" name="phone" type="tel" autocomplete="tel" class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
+              </div>
+            </section>
+
+            <section class="checkout-panel space-y-5" data-step-panel="2" aria-labelledby="address-title" hidden>
+              <div><p class="text-[10px] font-medium uppercase tracking-[.18em] text-[#67745d]">Paso 2 de 3</p><h2 id="address-title" tabindex="-1" class="font-serif mt-2 text-2xl">Dirección de entrega</h2><p class="mt-2 text-xs text-[#676960]">Indica dónde quieres recibir tu pedido.</p></div>
+              <div class="grid gap-5 sm:grid-cols-2">
+                <div class="sm:col-span-2"><label for="address" class="mb-2 block text-xs font-medium">Dirección *</label><input id="address" name="address" autocomplete="street-address" required data-required-step="2" class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
+                <div><label for="postal-code" class="mb-2 block text-xs font-medium">Código postal *</label><input id="postal-code" name="postalCode" autocomplete="postal-code" required data-required-step="2" class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
+                <div><label for="city" class="mb-2 block text-xs font-medium">Ciudad *</label><input id="city" name="city" autocomplete="address-level2" required data-required-step="2" class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
+                <div class="sm:col-span-2"><label for="region" class="mb-2 block text-xs font-medium">Provincia *</label><input id="region" name="region" autocomplete="address-level1" required data-required-step="2" class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
+              </div>
+            </section>
+
+            <section class="checkout-panel space-y-5" data-step-panel="3" aria-labelledby="payment-title" hidden>
+              <div><p class="text-[10px] font-medium uppercase tracking-[.18em] text-[#67745d]">Paso 3 de 3</p><h2 id="payment-title" tabindex="-1" class="font-serif mt-2 text-2xl">Pago con tarjeta</h2><p class="mt-2 text-xs leading-5 text-[#676960]">Demostración de interfaz únicamente. No introduzcas datos reales: no se procesan pagos ni se guardan estos valores.</p></div>
+              <div class="rounded border border-[#e6e3dc] bg-white/60 p-4">
+                <div><label for="cardholder" class="mb-2 block text-xs font-medium">Nombre del titular *</label><input id="cardholder" name="cardholder" autocomplete="cc-name" required data-required-step="3" class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
+                <div class="mt-5"><label for="card-number" class="mb-2 block text-xs font-medium">Número de tarjeta de prueba *</label><input id="card-number" name="cardNumber" type="text" inputmode="numeric" autocomplete="off" maxlength="19" pattern="(?:[0-9] ?){13,19}" placeholder="0000 0000 0000 0000" required data-required-step="3" class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /><p class="mt-2 text-[11px] text-[#73746d]">Usa únicamente números ficticios; el formulario no transmite ni almacena la tarjeta.</p></div>
+                <div class="mt-5 grid gap-5 sm:grid-cols-2">
+                  <div><label for="card-expiry" class="mb-2 block text-xs font-medium">Caducidad *</label><input id="card-expiry" name="cardExpiry" type="text" inputmode="numeric" autocomplete="off" maxlength="5" pattern="(?:0[1-9]|1[0-2])/[0-9]{2}" placeholder="MM/AA" required data-required-step="3" class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
+                  <div><label for="card-cvc" class="mb-2 block text-xs font-medium">CVC de prueba *</label><input id="card-cvc" name="cardCvc" type="password" inputmode="numeric" autocomplete="off" maxlength="4" pattern="[0-9]{3,4}" placeholder="•••" required data-required-step="3" class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
+                </div>
+              </div>
+            </section>
+
             <p id="checkout-error" class="text-sm text-red-700" role="alert" hidden></p>
-            <button id="place-order" type="submit" class="focus-ring w-full bg-[#67745d] px-6 py-4 text-xs font-medium uppercase tracking-[.16em] text-white transition hover:bg-[#52604a] sm:w-auto sm:min-w-72">Confirmar compra de prueba</button>
+            <div class="flex flex-col-reverse gap-3 border-t border-[#e6e3dc] pt-5 sm:flex-row sm:justify-between">
+              <button id="previous-step" type="button" class="focus-ring border border-[#d7d6ce] px-6 py-4 text-xs font-medium uppercase tracking-[.14em] hover:border-[#67745d]" hidden>Volver</button>
+              <button id="next-step" type="button" class="focus-ring bg-[#67745d] px-6 py-4 text-xs font-medium uppercase tracking-[.16em] text-white transition hover:bg-[#52604a] sm:min-w-64">Continuar</button>
+              <button id="place-order" type="submit" class="focus-ring bg-[#67745d] px-6 py-4 text-xs font-medium uppercase tracking-[.16em] text-white transition hover:bg-[#52604a] sm:min-w-72" hidden>Confirmar compra de prueba</button>
+            </div>
           </form>
 
           <aside class="border border-[#e6e3dc] bg-white/50 p-5 sm:p-7" aria-labelledby="order-summary-title">
@@ -96,7 +118,54 @@
       const currency = new Intl.NumberFormat('es-ES', { style:'currency', currency:'EUR' });
       const checkoutItems = document.getElementById('checkout-items');
       const checkoutForm = document.getElementById('checkout-form');
+      const checkoutPanels = Array.from(document.querySelectorAll('[data-step-panel]'));
+      const stepIndicators = Array.from(document.querySelectorAll('[data-step-indicator]'));
+      let currentStep = 1;
       let cart = [];
+
+      function setStep(step) {
+        currentStep = step;
+        checkoutPanels.forEach(panel => { panel.hidden = Number(panel.dataset.stepPanel) !== step; });
+        stepIndicators.forEach(button => {
+          const active = Number(button.dataset.stepIndicator) === step;
+          button.disabled = Number(button.dataset.stepIndicator) > step;
+          button.toggleAttribute('aria-current', active);
+          if (active) button.setAttribute('aria-current', 'step');
+          else button.removeAttribute('aria-current');
+          button.classList.toggle('border-[#67745d]', active);
+          button.classList.toggle('border-[#d7d6ce]', !active);
+          button.classList.toggle('text-[#73746d]', !active);
+          button.classList.toggle('text-[#20231f]', active);
+        });
+        document.getElementById('previous-step').hidden = step === 1;
+        document.getElementById('next-step').hidden = step === 3;
+        document.getElementById('place-order').hidden = step !== 3;
+        document.getElementById('checkout-error').hidden = true;
+      }
+
+      function validateStep(step) {
+        const fields = Array.from(checkoutForm.querySelectorAll(`[data-required-step="${step}"]`));
+        for (const field of fields) {
+          if (!field.checkValidity()) {
+            field.reportValidity();
+            field.focus();
+            return false;
+          }
+        }
+        return true;
+      }
+
+      document.getElementById('next-step').addEventListener('click', () => {
+        if (validateStep(currentStep)) {
+          setStep(Math.min(3, currentStep + 1));
+          document.querySelector(`[data-step-panel="${currentStep}"] h2`).focus();
+        }
+      });
+      document.getElementById('previous-step').addEventListener('click', () => setStep(Math.max(1, currentStep - 1)));
+      stepIndicators.forEach(button => button.addEventListener('click', () => {
+        const targetStep = Number(button.dataset.stepIndicator);
+        if (targetStep < currentStep) setStep(targetStep);
+      }));
 
       function readCart() {
         try {
@@ -144,7 +213,15 @@
           error.hidden = false;
           return;
         }
-        if (!checkoutForm.reportValidity()) return;
+        for (let step = 1; step <= 3; step += 1) {
+          const invalidField = Array.from(checkoutForm.querySelectorAll(`[data-required-step="${step}"]`)).find(field => !field.checkValidity());
+          if (invalidField) {
+            setStep(step);
+            invalidField.reportValidity();
+            invalidField.focus();
+            return;
+          }
+        }
         try {
           // Guardar un array vacío (en vez de borrar la clave) evita que la bolsa
           // vuelva a sembrar productos de ejemplo al volver a abrir carrito.html.
@@ -182,6 +259,7 @@
         });
         renderSummary();
       }
+      setStep(1);
       renderSummary();
       loadPartials();
     </script>
