@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Completa los datos de entrega de tu pedido SENDA y confirma tu compra de prueba." />
+    <meta name="theme-color" content="#faf9f6" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content="Finalizar compra | SENDA" />
+    <meta property="og:description" content="Confirma los datos de entrega de tu pedido SENDA." />
+    <title>Finalizar compra — SENDA | Moda consciente</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      :root { color-scheme: light; }
+      html { scroll-behavior: smooth; }
+      body { background: #faf9f6; color: #20231f; font-family: Arial, Helvetica, sans-serif; }
+      .font-serif { font-family: Georgia, 'Times New Roman', serif; }
+      .focus-ring:focus-visible { outline: 2px solid #67745d; outline-offset: 4px; }
+      [hidden] { display: none !important; }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+    </style>
+  </head>
+  <body class="min-h-screen antialiased">
+    <a href="#contenido" class="focus-ring sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-white focus:px-4 focus:py-3">Saltar al contenido</a>
+    <div id="site-header" data-partial="partials/header.html"></div>
+
+    <main id="contenido" class="mx-auto max-w-7xl px-5 py-10 sm:px-8 sm:py-14">
+      <nav aria-label="Ruta de navegación" class="mb-7 text-xs text-[#73746d]"><a href="index.html" class="focus-ring hover:text-[#20231f]">Inicio</a><span aria-hidden="true" class="mx-2">/</span><a href="carrito.html" class="focus-ring hover:text-[#20231f]">Tu bolsa</a><span aria-hidden="true" class="mx-2">/</span><span aria-current="page">Finalizar compra</span></nav>
+
+      <section id="checkout-content">
+        <header class="mb-9 border-b border-[#e6e3dc] pb-6">
+          <p class="text-[10px] font-medium uppercase tracking-[.22em] text-[#67745d]">Un último paso</p>
+          <h1 class="font-serif mt-2 text-4xl sm:text-5xl">Finalizar compra</h1>
+          <p class="mt-3 text-sm text-[#676960]">Este es un prototipo: no se realizará ningún cobro.</p>
+        </header>
+
+        <div id="empty-checkout" class="hidden border border-[#e6e3dc] px-6 py-12 text-center" role="status">
+          <h2 class="font-serif text-3xl">Tu bolsa está vacía</h2>
+          <p class="mt-3 text-sm text-[#676960]">Añade algún producto antes de finalizar la compra.</p>
+          <a href="catalogo.html" class="focus-ring mt-6 inline-block bg-[#67745d] px-6 py-3 text-xs uppercase tracking-[.14em] text-white">Volver a la colección</a>
+        </div>
+
+        <div id="checkout-layout" class="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-14">
+          <form id="checkout-form" class="space-y-8" novalidate>
+            <fieldset>
+              <legend class="font-serif text-2xl">Datos de entrega</legend>
+              <div class="mt-5 grid gap-5 sm:grid-cols-2">
+                <div class="sm:col-span-2"><label for="full-name" class="mb-2 block text-xs font-medium">Nombre completo *</label><input id="full-name" name="name" autocomplete="name" required class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
+                <div><label for="email" class="mb-2 block text-xs font-medium">Correo electrónico *</label><input id="email" name="email" type="email" autocomplete="email" required class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
+                <div><label for="phone" class="mb-2 block text-xs font-medium">Teléfono</label><input id="phone" name="phone" type="tel" autocomplete="tel" class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
+                <div class="sm:col-span-2"><label for="address" class="mb-2 block text-xs font-medium">Dirección *</label><input id="address" name="address" autocomplete="street-address" required class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
+                <div><label for="postal-code" class="mb-2 block text-xs font-medium">Código postal *</label><input id="postal-code" name="postalCode" autocomplete="postal-code" required class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
+                <div><label for="city" class="mb-2 block text-xs font-medium">Ciudad *</label><input id="city" name="city" autocomplete="address-level2" required class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
+                <div class="sm:col-span-2"><label for="region" class="mb-2 block text-xs font-medium">Provincia *</label><input id="region" name="region" autocomplete="address-level1" required class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm" /></div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend class="font-serif text-2xl">Método de pago</legend>
+              <p class="mt-2 text-xs leading-5 text-[#676960]">Simulación de pago para el prototipo. No introduzcas datos de tarjeta ni se realizará ningún cargo.</p>
+              <label for="payment-method" class="mb-2 mt-5 block text-xs font-medium">Selecciona un método *</label>
+              <select id="payment-method" name="payment" required class="focus-ring w-full border border-[#d7d6ce] bg-white px-3 py-3 text-sm sm:max-w-sm"><option value="">Elige una opción</option><option value="card-demo">Tarjeta (simulación)</option><option value="transfer-demo">Transferencia (simulación)</option></select>
+            </fieldset>
+            <p id="checkout-error" class="text-sm text-red-700" role="alert" hidden></p>
+            <button id="place-order" type="submit" class="focus-ring w-full bg-[#67745d] px-6 py-4 text-xs font-medium uppercase tracking-[.16em] text-white transition hover:bg-[#52604a] sm:w-auto sm:min-w-72">Confirmar compra de prueba</button>
+          </form>
+
+          <aside class="border border-[#e6e3dc] bg-white/50 p-5 sm:p-7" aria-labelledby="order-summary-title">
+            <h2 id="order-summary-title" class="font-serif text-2xl">Tu pedido</h2>
+            <ul id="checkout-items" class="mt-5 divide-y divide-[#e6e3dc]"></ul>
+            <dl class="mt-5 space-y-4 border-t border-[#e6e3dc] pt-5 text-sm">
+              <div class="flex justify-between gap-4"><dt class="text-[#676960]">Subtotal</dt><dd id="checkout-subtotal">—</dd></div>
+              <div class="flex justify-between gap-4"><dt class="text-[#676960]">IVA incluido (21 %)</dt><dd id="checkout-tax">—</dd></div>
+              <div class="flex justify-between gap-4"><dt class="text-[#676960]">Envío</dt><dd>Gratis</dd></div>
+              <div class="flex justify-between gap-4 border-t border-[#e6e3dc] pt-4 text-base font-semibold"><dt>Total</dt><dd id="checkout-total">—</dd></div>
+            </dl>
+          </aside>
+        </div>
+      </section>
+
+      <section id="order-confirmation" class="hidden mx-auto max-w-2xl border border-[#e6e3dc] bg-white/50 px-6 py-14 text-center" aria-labelledby="confirmation-title" role="status" tabindex="-1">
+        <p class="text-[10px] font-medium uppercase tracking-[.22em] text-[#67745d]">Pedido confirmado</p>
+        <h1 id="confirmation-title" class="font-serif mt-3 text-4xl">Gracias por elegir SENDA</h1>
+        <p class="mt-4 text-sm leading-7 text-[#676960]">Tu compra de prueba se ha completado. La bolsa se ha vaciado y ya puedes seguir explorando la colección.</p>
+        <p class="mt-5 text-xs text-[#73746d]">Referencia: <span id="order-reference" class="font-medium text-[#20231f]"></span></p>
+        <a href="catalogo.html" class="focus-ring mt-8 inline-block bg-[#67745d] px-6 py-3 text-xs uppercase tracking-[.14em] text-white">Volver a la colección</a>
+      </section>
+    </main>
+
+    <div id="site-footer" data-partial="partials/footer.html"></div>
+
+    <script>
+      const CART_KEY = 'senda-cart';
+      const TAX_RATE = 0.21;
+      const currency = new Intl.NumberFormat('es-ES', { style:'currency', currency:'EUR' });
+      const checkoutItems = document.getElementById('checkout-items');
+      const checkoutForm = document.getElementById('checkout-form');
+      let cart = [];
+
+      function readCart() {
+        try {
+          const stored = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+          return Array.isArray(stored) ? stored.filter(item => item && item.id && Number(item.price) >= 0)
+            .map(item => ({ ...item, price:Number(item.price), qty:Math.min(10, Math.max(1, Number.parseInt(item.qty, 10) || 1)), size:String(item.size || 'M') })) : [];
+        } catch (error) { return []; }
+      }
+
+      function renderSummary() {
+        cart = readCart();
+        checkoutItems.replaceChildren();
+        let subtotal = 0;
+        cart.forEach(item => {
+          const line = item.price * item.qty;
+          subtotal += line;
+          const row = document.createElement('li');
+          row.className = 'flex items-start justify-between gap-3 py-3 text-xs';
+          const info = document.createElement('span');
+          info.className = 'leading-5';
+          info.textContent = `${item.name} · ${item.size} · Cant. ${item.qty}`;
+          const price = document.createElement('span');
+          price.className = 'shrink-0 font-medium';
+          price.textContent = currency.format(line);
+          row.append(info, price);
+          checkoutItems.append(row);
+        });
+        const tax = subtotal * TAX_RATE / (1 + TAX_RATE);
+        document.getElementById('checkout-subtotal').textContent = currency.format(subtotal);
+        document.getElementById('checkout-tax').textContent = currency.format(tax);
+        document.getElementById('checkout-total').textContent = currency.format(subtotal);
+        const empty = cart.length === 0;
+        document.getElementById('empty-checkout').classList.toggle('hidden', !empty);
+        document.getElementById('checkout-layout').hidden = empty;
+        document.querySelectorAll('[data-cart-count]').forEach(node => node.textContent = String(cart.reduce((sum, item) => sum + item.qty, 0)));
+      }
+
+      checkoutForm.addEventListener('submit', event => {
+        event.preventDefault();
+        const error = document.getElementById('checkout-error');
+        error.hidden = true;
+        renderSummary();
+        if (!cart.length) {
+          error.textContent = 'Tu bolsa está vacía. Añade productos antes de continuar.';
+          error.hidden = false;
+          return;
+        }
+        if (!checkoutForm.reportValidity()) return;
+        try {
+          // Guardar un array vacío (en vez de borrar la clave) evita que la bolsa
+          // vuelva a sembrar productos de ejemplo al volver a abrir carrito.html.
+          localStorage.setItem(CART_KEY, JSON.stringify([]));
+        } catch (storageError) {
+          error.textContent = 'No se pudo completar la compra porque el almacenamiento local no está disponible.';
+          error.hidden = false;
+          return;
+        }
+        document.getElementById('checkout-content').hidden = true;
+        const confirmation = document.getElementById('order-confirmation');
+        confirmation.classList.remove('hidden');
+        document.getElementById('order-reference').textContent = `SND-${Date.now().toString(36).toUpperCase()}`;
+        document.querySelectorAll('[data-cart-count]').forEach(node => node.textContent = '0');
+        document.title = 'Pedido confirmado | SENDA';
+        confirmation.focus();
+      });
+
+      async function loadPartials() {
+        await Promise.all(Array.from(document.querySelectorAll('[data-partial]'), async slot => {
+          try {
+            const response = await fetch(slot.dataset.partial);
+            if (!response.ok) throw new Error(`No se pudo cargar ${slot.dataset.partial}`);
+            slot.innerHTML = await response.text();
+          } catch (error) { console.error(error); }
+        }));
+        document.querySelectorAll('[data-year]').forEach(node => node.textContent = new Date().getFullYear());
+        const menuButton = document.querySelector('[data-menu-button]');
+        const mobileMenu = document.querySelector('[data-mobile-menu]');
+        if (menuButton && mobileMenu) menuButton.addEventListener('click', () => {
+          const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+          menuButton.setAttribute('aria-expanded', String(!isOpen));
+          menuButton.setAttribute('aria-label', isOpen ? 'Abrir menú' : 'Cerrar menú');
+          mobileMenu.classList.toggle('hidden', isOpen);
+        });
+        renderSummary();
+      }
+      renderSummary();
+      loadPartials();
+    </script>
+  </body>
+</html>
