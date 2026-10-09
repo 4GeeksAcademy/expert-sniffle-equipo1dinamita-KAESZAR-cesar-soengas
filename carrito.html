@@ -198,14 +198,6 @@
         if (isEmpty) document.getElementById('cart-item-count').textContent = '0 artículos';
       }
 
-      document.getElementById('checkout-button').addEventListener('click', event => {
-        const cart = readCart() || exampleItems;
-        if (!cart.length) {
-          event.preventDefault();
-          status.textContent = 'Añade algún producto a la bolsa antes de continuar.';
-        }
-      });
-
       function seedExampleCart() {
         try {
           if (localStorage.getItem(CART_KEY) === null) {
@@ -213,6 +205,17 @@
           }
         } catch (error) { console.warn('Se mostrarán productos de ejemplo sin guardar la bolsa.', error); }
       }
+
+      function goToCheckout(event) {
+        event.preventDefault();
+        const cart = readCart();
+        if (!cart || cart.length === 0) {
+          status.textContent = 'Añade algún producto a la bolsa antes de continuar.';
+          return;
+        }
+        window.location.href = 'checkout.html';
+      }
+      document.getElementById('checkout-button').addEventListener('click', goToCheckout);
 
       async function loadPartials() {
         await Promise.all(Array.from(document.querySelectorAll('[data-partial]'), async slot => {
