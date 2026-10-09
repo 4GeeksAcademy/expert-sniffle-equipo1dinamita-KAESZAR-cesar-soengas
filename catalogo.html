@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Explora la colección completa de Senda: prendas esenciales de diseño consciente, materiales naturales y cortes atemporales." />
+    <meta name="theme-color" content="#faf9f6" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content="Colección de ropa esencial | SENDA" />
+    <meta property="og:description" content="Encuentra prendas para durar: lino, punto y esenciales atemporales de Senda." />
+    <title>La colección — SENDA | Moda consciente</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      :root { color-scheme: light; }
+      html { scroll-behavior: smooth; }
+      body { background: #faf9f6; color: #20231f; font-family: Arial, Helvetica, sans-serif; }
+      .font-serif { font-family: Georgia, 'Times New Roman', serif; }
+      .focus-ring:focus-visible { outline: 2px solid #67745d; outline-offset: 4px; }
+      [hidden] { display: none !important; }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+    </style>
+  </head>
+  <body class="min-h-screen antialiased">
+    <a href="#contenido" class="focus-ring sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-white focus:px-4 focus:py-3">Saltar al contenido</a>
+
+    <div id="site-header" data-partial="partials/header.html"></div>
+
+    <main id="contenido" class="mx-auto max-w-7xl px-5 py-10 sm:px-8 sm:py-14 lg:py-16">
+      <nav aria-label="Ruta de navegación" class="mb-8 text-xs text-[#73746d]"><a href="index.html" class="focus-ring hover:text-[#20231f]">Inicio</a><span aria-hidden="true" class="mx-2">/</span><span aria-current="page">Colección</span></nav>
+      <header class="max-w-2xl">
+        <p class="text-[10px] font-medium uppercase tracking-[.22em] text-[#67745d] sm:text-xs">Prendas para acompañarte</p>
+        <h1 class="font-serif mt-3 text-4xl sm:text-5xl">La colección</h1>
+        <p class="mt-4 text-sm leading-7 text-[#676960] sm:text-base">Siluetas fáciles, tejidos naturales y tonos que combinan entre sí. Encuentra tus nuevos esenciales y elige con intención.</p>
+      </header>
+
+      <section aria-label="Productos y filtros" class="mt-9">
+        <div class="border-y border-[#e6e3dc] py-5">
+          <div class="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+            <fieldset>
+              <legend class="mb-3 text-xs font-semibold uppercase tracking-[.12em]">Categoría</legend>
+              <div class="flex flex-wrap gap-2" role="group" aria-label="Filtrar por categoría">
+                <button type="button" class="category-filter focus-ring rounded-full border border-[#67745d] bg-[#67745d] px-4 py-2 text-xs text-white" data-category="all" aria-pressed="true">Todo</button>
+                <button type="button" class="category-filter focus-ring rounded-full border border-[#d7d6ce] px-4 py-2 text-xs transition hover:border-[#67745d]" data-category="tops" aria-pressed="false">Camisas y tops</button>
+                <button type="button" class="category-filter focus-ring rounded-full border border-[#d7d6ce] px-4 py-2 text-xs transition hover:border-[#67745d]" data-category="knitwear" aria-pressed="false">Punto</button>
+                <button type="button" class="category-filter focus-ring rounded-full border border-[#d7d6ce] px-4 py-2 text-xs transition hover:border-[#67745d]" data-category="bottoms" aria-pressed="false">Pantalones</button>
+                <button type="button" class="category-filter focus-ring rounded-full border border-[#d7d6ce] px-4 py-2 text-xs transition hover:border-[#67745d]" data-category="outerwear" aria-pressed="false">Abrigos</button>
+              </div>
+            </fieldset>
+            <div class="flex flex-wrap items-end gap-4 sm:gap-6">
+              <fieldset>
+                <legend class="mb-3 text-xs font-semibold uppercase tracking-[.12em]">Talla</legend>
+                <div class="flex gap-2" role="group" aria-label="Filtrar por talla">
+                  <button type="button" class="size-filter focus-ring flex h-9 w-9 items-center justify-center border border-[#d7d6ce] text-xs transition hover:border-[#67745d]" data-size="S" aria-pressed="false">S</button>
+                  <button type="button" class="size-filter focus-ring flex h-9 w-9 items-center justify-center border border-[#d7d6ce] text-xs transition hover:border-[#67745d]" data-size="M" aria-pressed="false">M</button>
+                  <button type="button" class="size-filter focus-ring flex h-9 w-9 items-center justify-center border border-[#d7d6ce] text-xs transition hover:border-[#67745d]" data-size="L" aria-pressed="false">L</button>
+                  <button type="button" class="size-filter focus-ring flex h-9 w-9 items-center justify-center border border-[#d7d6ce] text-xs transition hover:border-[#67745d]" data-size="XL" aria-pressed="false">XL</button>
+                </div>
+              </fieldset>
+              <button id="clear-filters" type="button" class="focus-ring pb-2 text-xs text-[#676960] underline underline-offset-4 hover:text-[#20231f]">Limpiar filtros</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between py-5">
+          <p id="result-count" class="text-xs text-[#676960]" aria-live="polite">20 prendas</p>
+          <label for="sort-products" class="flex items-center gap-2 text-xs text-[#676960]">Ordenar por
+            <select id="sort-products" class="focus-ring border-0 bg-transparent py-2 text-xs text-[#20231f]"><option value="featured">Recomendados</option><option value="price-asc">Precio: menor a mayor</option><option value="price-desc">Precio: mayor a menor</option></select>
+          </label>
+        </div>
+
+        <div id="product-grid" class="grid grid-cols-2 gap-x-4 gap-y-9 sm:gap-x-6 sm:gap-y-11 md:grid-cols-3 lg:grid-cols-4">
+          <article class="product-card group" data-category="tops" data-sizes="S M L XL" data-price="89" data-order="1" data-name="Camisa Lino">
+            <a href="producto.html?item=camisa-lino" class="focus-ring block" aria-label="Ver Camisa Lino, 89 euros">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=800&q=85" alt="Camisa Lino blanca de lino de corte relajado" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"><span class="absolute left-3 top-3 bg-[#faf9f6] px-2.5 py-1 text-[9px] uppercase tracking-[.14em]">Nuevo</span></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h2 class="text-sm">Camisa Lino</h2><p class="mt-1 text-xs text-[#73746d]">Blanco natural</p></div><p class="shrink-0 text-sm">89 €</p></div>
+            </a>
+            <button type="button" class="add-to-bag focus-ring mt-3 text-xs font-medium underline underline-offset-4" data-id="camisa-lino" data-name="Camisa Lino" data-price="89" data-image="https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=300&q=70">Añadir a la bolsa</button>
+          </article>
+          <article class="product-card group" data-category="outerwear" data-sizes="S M L" data-price="189" data-order="2" data-name="Abrigo Siena">
+            <a href="producto.html?item=abrigo-siena" class="focus-ring block" aria-label="Ver Abrigo Siena, 189 euros">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=85" alt="Abrigo largo Siena en tono camel" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"><span class="absolute left-3 top-3 bg-[#faf9f6] px-2.5 py-1 text-[9px] uppercase tracking-[.14em]">Nuevo</span></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h2 class="text-sm">Abrigo Siena</h2><p class="mt-1 text-xs text-[#73746d]">Camel</p></div><p class="shrink-0 text-sm">189 €</p></div>
+            </a>
+            <button type="button" class="add-to-bag focus-ring mt-3 text-xs font-medium underline underline-offset-4" data-id="abrigo-siena" data-name="Abrigo Siena" data-price="189" data-image="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=300&q=70">Añadir a la bolsa</button>
+          </article>
+          <article class="product-card group" data-category="knitwear" data-sizes="S M L XL" data-price="119" data-order="3" data-name="Jersey Alba">
+            <a href="producto.html?item=jersey-alba" class="focus-ring block" aria-label="Ver Jersey Alba, 119 euros">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=800&q=85" alt="Jersey de punto Alba en color avena" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"><span class="absolute left-3 top-3 bg-[#faf9f6] px-2.5 py-1 text-[9px] uppercase tracking-[.14em]">Nuevo</span></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h2 class="text-sm">Jersey Alba</h2><p class="mt-1 text-xs text-[#73746d]">Avena</p></div><p class="shrink-0 text-sm">119 €</p></div>
+            </a>
+            <button type="button" class="add-to-bag focus-ring mt-3 text-xs font-medium underline underline-offset-4" data-id="jersey-alba" data-name="Jersey Alba" data-price="119" data-image="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=300&q=70">Añadir a la bolsa</button>
+          </article>
+          <article class="product-card group" data-category="bottoms" data-sizes="S M L XL" data-price="99" data-order="4" data-name="Pantalón Tierra">
+            <a href="producto.html?item=pantalon-tierra" class="focus-ring block" aria-label="Ver Pantalón Tierra, 99 euros">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1506629905607-d9b297d42e59?auto=format&fit=crop&w=800&q=85" alt="Pantalón recto Tierra en tono natural" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"><span class="absolute left-3 top-3 bg-[#faf9f6] px-2.5 py-1 text-[9px] uppercase tracking-[.14em]">Nuevo</span></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h2 class="text-sm">Pantalón Tierra</h2><p class="mt-1 text-xs text-[#73746d]">Arena</p></div><p class="shrink-0 text-sm">99 €</p></div>
+            </a>
+            <button type="button" class="add-to-bag focus-ring mt-3 text-xs font-medium underline underline-offset-4" data-id="pantalon-tierra" data-name="Pantalón Tierra" data-price="99" data-image="https://images.unsplash.com/photo-1506629905607-d9b297d42e59?auto=format&fit=crop&w=300&q=70">Añadir a la bolsa</button>
+          </article>
+          <article class="product-card group" data-category="tops" data-sizes="S M L" data-price="69" data-order="5" data-name="Top Brisa">
+            <a href="producto.html?item=top-brisa" class="focus-ring block" aria-label="Ver Top Brisa, 69 euros">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1551163943-3f6a855d1153?auto=format&fit=crop&w=800&q=85" alt="Top de algodón Brisa en tono crudo" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"><span class="absolute left-3 top-3 bg-[#faf9f6] px-2.5 py-1 text-[9px] uppercase tracking-[.14em]">Nuevo</span></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h2 class="text-sm">Top Brisa</h2><p class="mt-1 text-xs text-[#73746d]">Crudo</p></div><p class="shrink-0 text-sm">69 €</p></div>
+            </a>
+            <button type="button" class="add-to-bag focus-ring mt-3 text-xs font-medium underline underline-offset-4" data-id="top-brisa" data-name="Top Brisa" data-price="69" data-image="https://images.unsplash.com/photo-1551163943-3f6a855d1153?auto=format&fit=crop&w=300&q=70">Añadir a la bolsa</button>
+          </article>
+          <article class="product-card group" data-category="knitwear" data-sizes="S M L XL" data-price="129" data-order="6" data-name="Cárdigan Nube">
+            <a href="producto.html?item=cardigan-nube" class="focus-ring block" aria-label="Ver Cárdigan Nube, 129 euros">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=85" alt="Cárdigan de punto Nube en tono claro" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h2 class="text-sm">Cárdigan Nube</h2><p class="mt-1 text-xs text-[#73746d]">Marfil</p></div><p class="shrink-0 text-sm">129 €</p></div>
+            </a>
+            <button type="button" class="add-to-bag focus-ring mt-3 text-xs font-medium underline underline-offset-4" data-id="cardigan-nube" data-name="Cárdigan Nube" data-price="129" data-image="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=300&q=70">Añadir a la bolsa</button>
+          </article>
+          <article class="product-card group" data-category="bottoms" data-sizes="S M L" data-price="109" data-order="7" data-name="Pantalón Olmo">
+            <a href="producto.html?item=pantalon-olmo" class="focus-ring block" aria-label="Ver Pantalón Olmo, 109 euros">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800&q=85" alt="Pantalón Olmo de corte recto en tono tierra" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h2 class="text-sm">Pantalón Olmo</h2><p class="mt-1 text-xs text-[#73746d]">Oliva</p></div><p class="shrink-0 text-sm">109 €</p></div>
+            </a>
+            <button type="button" class="add-to-bag focus-ring mt-3 text-xs font-medium underline underline-offset-4" data-id="pantalon-olmo" data-name="Pantalón Olmo" data-price="109" data-image="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=300&q=70">Añadir a la bolsa</button>
+          </article>
+          <article class="product-card group" data-category="outerwear" data-sizes="S M L XL" data-price="159" data-order="8" data-name="Chaqueta Campo">
+            <a href="producto.html?item=chaqueta-campo" class="focus-ring block" aria-label="Ver Chaqueta Campo, 159 euros">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1548624149-f2d5d9a2c8f2?auto=format&fit=crop&w=800&q=85" alt="Chaqueta ligera Campo en color verde oliva" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h2 class="text-sm">Chaqueta Campo</h2><p class="mt-1 text-xs text-[#73746d]">Oliva</p></div><p class="shrink-0 text-sm">159 €</p></div>
+            </a>
+            <button type="button" class="add-to-bag focus-ring mt-3 text-xs font-medium underline underline-offset-4" data-id="chaqueta-campo" data-name="Chaqueta Campo" data-price="159" data-image="https://images.unsplash.com/photo-1548624149-f2d5d9a2c8f2?auto=format&fit=crop&w=300&q=70">Añadir a la bolsa</button>
+          </article>
+          <article class="product-card group" data-category="tops" data-sizes="S M L XL" data-price="79" data-order="9" data-name="Camisa Nube">
+            <a href="producto.html?item=camisa-nube" class="focus-ring block" aria-label="Ver Camisa Nube, 79 euros">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=85" alt="Camisa Nube de algodón en color blanco" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h2 class="text-sm">Camisa Nube</h2><p class="mt-1 text-xs text-[#73746d]">Blanco</p></div><p class="shrink-0 text-sm">79 €</p></div>
+            </a>
+            <button type="button" class="add-to-bag focus-ring mt-3 text-xs font-medium underline underline-offset-4" data-id="camisa-nube" data-name="Camisa Nube" data-price="79" data-image="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=300&q=70">Añadir a la bolsa</button>
+          </article>
+          <article class="product-card group" data-category="knitwear" data-sizes="S M L" data-price="99" data-order="10" data-name="Jersey Bruma">
+            <a href="producto.html?item=jersey-bruma" class="focus-ring block" aria-label="Ver Jersey Bruma, 99 euros">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=800&q=85" alt="Jersey Bruma de punto fino en tono gris" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h2 class="text-sm">Jersey Bruma</h2><p class="mt-1 text-xs text-[#73746d]">Gris piedra</p></div><p class="shrink-0 text-sm">99 €</p></div>
+            </a>
+            <button type="button" class="add-to-bag focus-ring mt-3 text-xs font-medium underline underline-offset-4" data-id="jersey-bruma" data-name="Jersey Bruma" data-price="99" data-image="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=300&q=70">Añadir a la bolsa</button>
+          </article>
+          <article class="product-card group" data-category="bottoms" data-sizes="S M L XL" data-price="89" data-order="11" data-name="Falda Serena">
+            <a href="producto.html?item=falda-serena" class="focus-ring block" aria-label="Ver Falda Serena, 89 euros">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?auto=format&fit=crop&w=800&q=85" alt="Falda Serena de caída fluida en beige" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h2 class="text-sm">Falda Serena</h2><p class="mt-1 text-xs text-[#73746d]">Arena</p></div><p class="shrink-0 text-sm">89 €</p></div>
+            </a>
+            <button type="button" class="add-to-bag focus-ring mt-3 text-xs font-medium underline underline-offset-4" data-id="falda-serena" data-name="Falda Serena" data-price="89" data-image="https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?auto=format&fit=crop&w=300&q=70">Añadir a la bolsa</button>
+          </article>
+          <article class="product-card group" data-category="outerwear" data-sizes="S M L" data-price="139" data-order="12" data-name="Sobrecamisa Norte">
+            <a href="producto.html?item=sobrecamisa-norte" class="focus-ring block" aria-label="Ver Sobrecamisa Norte, 139 euros">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800&q=85" alt="Sobrecamisa Norte estructurada en tono neutro" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h2 class="text-sm">Sobrecamisa Norte</h2><p class="mt-1 text-xs text-[#73746d]">Piedra</p></div><p class="shrink-0 text-sm">139 €</p></div>
+            </a>
+            <button type="button" class="add-to-bag focus-ring mt-3 text-xs font-medium underline underline-offset-4" data-id="sobrecamisa-norte" data-name="Sobrecamisa Norte" data-price="139" data-image="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=300&q=70">Añadir a la bolsa</button>
+          </article>
+          <article class="product-card group" data-category="tops" data-sizes="S M L XL" data-price="75" data-order="13" data-name="Blusa Alba">
+            <a href="producto.html?item=blusa-alba" class="focus-ring block" aria-label="Ver Blusa Alba, 75 euros">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1564257577-6e3f9cd0d5a3?auto=format&fit=crop&w=800&q=85" alt="Blusa Alba ligera en tono claro" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h2 class="text-sm">Blusa Alba</h2><p class="mt-1 text-xs text-[#73746d]">Marfil</p></div><p class="shrink-0 text-sm">75 €</p></div>
+            </a>
+            <button type="button" class="add-to-bag focus-ring mt-3 text-xs font-medium underline underline-offset-4" data-id="blusa-alba" data-name="Blusa Alba" data-price="75" data-image="https://images.unsplash.com/photo-1564257577-6e3f9cd0d5a3?auto=format&fit=crop&w=300&q=70">Añadir a la bolsa</button>
+          </article>
+          <article class="product-card group" data-category="outerwear" data-sizes="S M L XL" data-price="179" data-order="14" data-name="Abrigo Prado">
+            <a href="producto.html?item=abrigo-prado" class="focus-ring block" aria-label="Ver Abrigo Prado, 179 euros">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1544923246-77307dd654cb?auto=format&fit=crop&w=800&q=85" alt="Abrigo Prado de corte largo en tono neutro" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h2 class="text-sm">Abrigo Prado</h2><p class="mt-1 text-xs text-[#73746d]">Piedra</p></div><p class="shrink-0 text-sm">179 €</p></div>
+            </a>
+            <button type="button" class="add-to-bag focus-ring mt-3 text-xs font-medium underline underline-offset-4" data-id="abrigo-prado" data-name="Abrigo Prado" data-price="179" data-image="https://images.unsplash.com/photo-1544923246-77307dd654cb?auto=format&fit=crop&w=300&q=70">Añadir a la bolsa</button>
+          </article>
+          <article class="product-card group" data-category="knitwear" data-sizes="S M L" data-price="105" data-order="15" data-name="Jersey Oliva">
+            <a href="producto.html?item=jersey-oliva" class="focus-ring block" aria-label="Ver Jersey Oliva, 105 euros">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=800&q=85" alt="Jersey de punto Oliva en tono verde suave" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h2 class="text-sm">Jersey Oliva</h2><p class="mt-1 text-xs text-[#73746d]">Oliva</p></div><p class="shrink-0 text-sm">105 €</p></div>
+            </a>
+            <button type="button" class="add-to-bag focus-ring mt-3 text-xs font-medium underline underline-offset-4" data-id="jersey-oliva" data-name="Jersey Oliva" data-price="105" data-image="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=300&q=70">Añadir a la bolsa</button>
+          </article>
+          <article class="product-card group" data-category="bottoms" data-sizes="S M L XL" data-price="95" data-order="16" data-name="Pantalón Arena">
+            <a href="producto.html?item=pantalon-arena" class="focus-ring block" aria-label="Ver Pantalón Arena, 95 euros">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800&q=85" alt="Pantalón Arena de corte recto y tejido fluido" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h2 class="text-sm">Pantalón Arena</h2><p class="mt-1 text-xs text-[#73746d]">Arena</p></div><p class="shrink-0 text-sm">95 €</p></div>
+            </a>
+            <button type="button" class="add-to-bag focus-ring mt-3 text-xs font-medium underline underline-offset-4" data-id="pantalon-arena" data-name="Pantalón Arena" data-price="95" data-image="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=300&q=70">Añadir a la bolsa</button>
+          </article>
+          <article class="product-card group" data-category="tops" data-sizes="S M L" data-price="82" data-order="17" data-name="Camisa Horizonte">
+            <a href="producto.html?item=camisa-horizonte" class="focus-ring block" aria-label="Ver Camisa Horizonte, 82 euros">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=85" alt="Camisa Horizonte de algodón con silueta relajada" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h2 class="text-sm">Camisa Horizonte</h2><p class="mt-1 text-xs text-[#73746d]">Azul humo</p></div><p class="shrink-0 text-sm">82 €</p></div>
+            </a>
+            <button type="button" class="add-to-bag focus-ring mt-3 text-xs font-medium underline underline-offset-4" data-id="camisa-horizonte" data-name="Camisa Horizonte" data-price="82" data-image="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=300&q=70">Añadir a la bolsa</button>
+          </article>
+          <article class="product-card group" data-category="knitwear" data-sizes="S M L XL" data-price="115" data-order="18" data-name="Cárdigan Bosque">
+            <a href="producto.html?item=cardigan-bosque" class="focus-ring block" aria-label="Ver Cárdigan Bosque, 115 euros">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=85" alt="Cárdigan Bosque de punto suave" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h2 class="text-sm">Cárdigan Bosque</h2><p class="mt-1 text-xs text-[#73746d]">Salvia</p></div><p class="shrink-0 text-sm">115 €</p></div>
+            </a>
+            <button type="button" class="add-to-bag focus-ring mt-3 text-xs font-medium underline underline-offset-4" data-id="cardigan-bosque" data-name="Cárdigan Bosque" data-price="115" data-image="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=300&q=70">Añadir a la bolsa</button>
+          </article>
+          <article class="product-card group" data-category="bottoms" data-sizes="S M L XL" data-price="92" data-order="19" data-name="Falda Horizonte">
+            <a href="producto.html?item=falda-horizonte" class="focus-ring block" aria-label="Ver Falda Horizonte, 92 euros">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?auto=format&fit=crop&w=800&q=85" alt="Falda Horizonte de línea fluida en color neutro" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h2 class="text-sm">Falda Horizonte</h2><p class="mt-1 text-xs text-[#73746d]">Topo</p></div><p class="shrink-0 text-sm">92 €</p></div>
+            </a>
+            <button type="button" class="add-to-bag focus-ring mt-3 text-xs font-medium underline underline-offset-4" data-id="falda-horizonte" data-name="Falda Horizonte" data-price="92" data-image="https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?auto=format&fit=crop&w=300&q=70">Añadir a la bolsa</button>
+          </article>
+          <article class="product-card group" data-category="outerwear" data-sizes="S M L" data-price="149" data-order="20" data-name="Chaqueta Río">
+            <a href="producto.html?item=chaqueta-rio" class="focus-ring block" aria-label="Ver Chaqueta Río, 149 euros">
+              <div class="relative overflow-hidden bg-[#ebe8e1]"><img src="https://images.unsplash.com/photo-1548624149-f2d5d9a2c8f2?auto=format&fit=crop&w=800&q=85" alt="Chaqueta Río ligera de corte clásico" class="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy"></div>
+              <div class="mt-4 flex items-start justify-between gap-2"><div><h2 class="text-sm">Chaqueta Río</h2><p class="mt-1 text-xs text-[#73746d]">Verde seco</p></div><p class="shrink-0 text-sm">149 €</p></div>
+            </a>
+            <button type="button" class="add-to-bag focus-ring mt-3 text-xs font-medium underline underline-offset-4" data-id="chaqueta-rio" data-name="Chaqueta Río" data-price="149" data-image="https://images.unsplash.com/photo-1548624149-f2d5d9a2c8f2?auto=format&fit=crop&w=300&q=70">Añadir a la bolsa</button>
+          </article>
+        </div>
+        <p id="empty-state" class="hidden py-16 text-center text-sm text-[#676960]">No hay prendas que coincidan con esos filtros. <button type="button" id="empty-clear" class="underline underline-offset-4">Quita algún filtro</button></p>
+      </section>
+    </main>
+
+    <div id="site-footer" data-partial="partials/footer.html"></div>
+    <p id="site-status" class="sr-only" role="status" aria-live="polite"></p>
+
+    <script>
+      const cards = Array.from(document.querySelectorAll('.product-card'));
+      const grid = document.getElementById('product-grid');
+      const resultCount = document.getElementById('result-count');
+      const emptyState = document.getElementById('empty-state');
+      let activeCategory = 'all';
+      let activeSize = '';
+
+      function updateProducts() {
+        const sort = document.getElementById('sort-products').value;
+        const visible = [];
+        cards.forEach(card => {
+          const categoryMatches = activeCategory === 'all' || card.dataset.category === activeCategory;
+          const sizeMatches = !activeSize || card.dataset.sizes.split(' ').includes(activeSize);
+          const show = categoryMatches && sizeMatches;
+          card.hidden = !show;
+          if (show) visible.push(card);
+        });
+        if (sort === 'price-asc') visible.sort((a,b) => Number(a.dataset.price) - Number(b.dataset.price));
+        else if (sort === 'price-desc') visible.sort((a,b) => Number(b.dataset.price) - Number(a.dataset.price));
+        else visible.sort((a,b) => Number(a.dataset.order) - Number(b.dataset.order));
+        visible.forEach(card => grid.appendChild(card));
+        resultCount.textContent = `${visible.length} ${visible.length === 1 ? 'prenda' : 'prendas'}`;
+        emptyState.classList.toggle('hidden', visible.length !== 0);
+      }
+
+      function clearFilters() {
+        activeCategory = 'all';
+        activeSize = '';
+        document.querySelectorAll('.category-filter').forEach(button => {
+          const selected = button.dataset.category === 'all';
+          button.setAttribute('aria-pressed', String(selected));
+          button.classList.toggle('bg-[#67745d]', selected);
+          button.classList.toggle('text-white', selected);
+          button.classList.toggle('border-[#67745d]', selected);
+        });
+        document.querySelectorAll('.size-filter').forEach(button => {
+          button.setAttribute('aria-pressed', 'false');
+          button.classList.remove('bg-[#20231f]', 'text-white', 'border-[#20231f]');
+        });
+        updateProducts();
+      }
+
+      document.querySelectorAll('.category-filter').forEach(button => button.addEventListener('click', () => {
+        activeCategory = button.dataset.category;
+        document.querySelectorAll('.category-filter').forEach(item => {
+          const selected = item === button;
+          item.setAttribute('aria-pressed', String(selected));
+          item.classList.toggle('bg-[#67745d]', selected);
+          item.classList.toggle('text-white', selected);
+          item.classList.toggle('border-[#67745d]', selected);
+        });
+        updateProducts();
+      }));
+      document.querySelectorAll('.size-filter').forEach(button => button.addEventListener('click', () => {
+        activeSize = activeSize === button.dataset.size ? '' : button.dataset.size;
+        document.querySelectorAll('.size-filter').forEach(item => {
+          const selected = item.dataset.size === activeSize;
+          item.setAttribute('aria-pressed', String(selected));
+          item.classList.toggle('bg-[#20231f]', selected);
+          item.classList.toggle('text-white', selected);
+          item.classList.toggle('border-[#20231f]', selected);
+        });
+        updateProducts();
+      }));
+      document.getElementById('sort-products').addEventListener('change', updateProducts);
+      document.getElementById('clear-filters').addEventListener('click', clearFilters);
+      document.getElementById('empty-clear').addEventListener('click', clearFilters);
+
+      document.querySelectorAll('.add-to-bag').forEach(button => button.addEventListener('click', () => {
+        let cart = [];
+        try { cart = JSON.parse(localStorage.getItem('senda-cart') || '[]'); } catch (error) { cart = []; }
+        const found = cart.find(item => item.id === button.dataset.id && item.size === 'M');
+        if (found) found.qty += 1;
+        else cart.push({ id:button.dataset.id, name:button.dataset.name, price:Number(button.dataset.price), image:button.dataset.image, size:'M', qty:1 });
+        localStorage.setItem('senda-cart', JSON.stringify(cart));
+        const count = cart.reduce((sum,item) => sum + (Number(item.qty) || 0), 0);
+        document.querySelectorAll('[data-cart-count]').forEach(node => node.textContent = count);
+        document.getElementById('site-status').textContent = `${button.dataset.name} añadida a la bolsa en talla M.`;
+        const originalText = button.textContent;
+        button.textContent = 'Añadido a la bolsa ✓';
+        window.setTimeout(() => { button.textContent = originalText; }, 1800);
+      }));
+
+      async function loadPartials() {
+        await Promise.all(Array.from(document.querySelectorAll('[data-partial]'), async slot => {
+          try {
+            const response = await fetch(slot.dataset.partial);
+            if (!response.ok) throw new Error(`No se pudo cargar ${slot.dataset.partial}`);
+            slot.innerHTML = await response.text();
+          } catch (error) {
+            console.error(error);
+            document.getElementById('site-status').textContent = 'No se pudo cargar la navegación compartida. Ejecuta el servidor local del proyecto.';
+          }
+        }));
+        document.querySelectorAll('[data-year]').forEach(node => node.textContent = new Date().getFullYear());
+        document.querySelectorAll('[data-nav-link]').forEach(link => {
+          const linkPage = link.getAttribute('href').split('#')[0] || 'index.html';
+          if (linkPage === 'catalogo.html') link.setAttribute('aria-current', 'page');
+        });
+        const menuButton = document.querySelector('[data-menu-button]');
+        const mobileMenu = document.querySelector('[data-mobile-menu]');
+        if (menuButton && mobileMenu) menuButton.addEventListener('click', () => {
+          const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+          menuButton.setAttribute('aria-expanded', String(!isOpen));
+          mobileMenu.classList.toggle('hidden', isOpen);
+        });
+        try {
+          const cart = JSON.parse(localStorage.getItem('senda-cart') || '[]');
+          const count = cart.reduce((total,item) => total + (Number(item.qty) || 0), 0);
+          document.querySelectorAll('[data-cart-count]').forEach(node => node.textContent = count);
+        } catch (error) {
+          document.querySelectorAll('[data-cart-count]').forEach(node => node.textContent = '0');
+        }
+      }
+      loadPartials();
+    </script>
+  </body>
+</html>
