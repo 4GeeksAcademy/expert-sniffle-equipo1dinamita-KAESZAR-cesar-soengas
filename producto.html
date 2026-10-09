@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Descubre las prendas esenciales de Senda: tejidos naturales, siluetas atemporales y diseño consciente." />
+    <meta name="theme-color" content="#faf9f6" />
+    <meta property="og:type" content="product" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content="Prenda esencial | SENDA" />
+    <meta property="og:description" content="Tejidos naturales y diseño atemporal para acompañarte durante mucho tiempo." />
+    <title>Prenda esencial — SENDA | Moda consciente</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      :root { color-scheme: light; }
+      html { scroll-behavior: smooth; }
+      body { background: #faf9f6; color: #20231f; font-family: Arial, Helvetica, sans-serif; }
+      .font-serif { font-family: Georgia, 'Times New Roman', serif; }
+      .focus-ring:focus-visible { outline: 2px solid #67745d; outline-offset: 4px; }
+      [hidden] { display: none !important; }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+    </style>
+  </head>
+  <body class="min-h-screen antialiased">
+    <a href="#contenido" class="focus-ring sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-white focus:px-4 focus:py-3">Saltar al contenido</a>
+    <div id="site-header" data-partial="partials/header.html"></div>
+
+    <main id="contenido" class="mx-auto max-w-7xl px-5 py-8 sm:px-8 sm:py-12">
+      <nav aria-label="Ruta de navegación" class="mb-7 text-xs text-[#73746d]"><a href="index.html" class="focus-ring hover:text-[#20231f]">Inicio</a><span aria-hidden="true" class="mx-2">/</span><a href="catalogo.html" class="focus-ring hover:text-[#20231f]">Colección</a><span aria-hidden="true" class="mx-2">/</span><span id="breadcrumb-name" aria-current="page">Camisa Lino</span></nav>
+
+      <section id="product-detail" class="grid gap-9 md:grid-cols-2 md:gap-12 lg:gap-20" aria-labelledby="product-name">
+        <div>
+          <div class="relative overflow-hidden bg-[#ebe8e1]">
+            <img id="product-image" src="https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=1200&q=90" alt="Camisa Lino blanca de lino de corte relajado" class="aspect-[4/5] w-full object-cover" fetchpriority="high">
+            <span class="absolute left-4 top-4 bg-[#faf9f6] px-3 py-1.5 text-[10px] uppercase tracking-[.16em]">Diseño consciente</span>
+          </div>
+          <p class="mt-3 text-xs text-[#73746d]">Una pieza versátil, pensada para acompañarte temporada tras temporada.</p>
+        </div>
+
+        <div class="md:py-5 lg:py-10">
+          <p id="product-category" class="text-[10px] font-medium uppercase tracking-[.22em] text-[#67745d]">Esenciales · Camisas y tops</p>
+          <h1 id="product-name" class="font-serif mt-3 text-3xl sm:text-4xl">Camisa Lino</h1>
+          <p id="product-code" class="mt-3 text-xs tracking-[.08em] text-[#73746d]">Código: SND-CAM-001</p>
+          <p id="product-price" class="mt-6 text-lg">89 €</p>
+          <p id="product-color" class="mt-2 text-sm text-[#676960]">Color: Blanco natural</p>
+          <div class="my-7 border-t border-[#e6e3dc]"></div>
+
+          <form id="product-form" novalidate>
+            <fieldset>
+              <legend class="mb-3 text-xs font-semibold uppercase tracking-[.12em]">Selecciona tu talla <span class="font-normal normal-case tracking-normal text-[#73746d]">(obligatorio)</span></legend>
+              <div id="size-options" class="flex flex-wrap gap-2">
+                <button type="button" class="size-option focus-ring flex h-11 min-w-11 items-center justify-center border border-[#d7d6ce] px-3 text-xs transition hover:border-[#67745d]" data-size="S" aria-pressed="false">S</button>
+                <button type="button" class="size-option focus-ring flex h-11 min-w-11 items-center justify-center border border-[#d7d6ce] px-3 text-xs transition hover:border-[#67745d]" data-size="M" aria-pressed="false">M</button>
+                <button type="button" class="size-option focus-ring flex h-11 min-w-11 items-center justify-center border border-[#d7d6ce] px-3 text-xs transition hover:border-[#67745d]" data-size="L" aria-pressed="false">L</button>
+                <button type="button" class="size-option focus-ring flex h-11 min-w-11 items-center justify-center border border-[#d7d6ce] px-3 text-xs transition hover:border-[#67745d]" data-size="XL" aria-pressed="false">XL</button>
+              </div>
+              <p id="size-error" class="mt-2 text-xs text-red-700" hidden>Selecciona una talla antes de añadir a la bolsa.</p>
+              <p id="size-unavailable" class="mt-2 text-xs text-[#73746d]" hidden>Esta prenda no está disponible en esa talla.</p>
+            </fieldset>
+
+            <div class="mt-6">
+              <label for="quantity" class="mb-3 block text-xs font-semibold uppercase tracking-[.12em]">Cantidad</label>
+              <div class="flex h-11 w-32 items-center border border-[#d7d6ce]">
+                <button type="button" id="quantity-minus" class="focus-ring h-full w-10 text-lg" aria-label="Reducir cantidad">−</button>
+                <input id="quantity" name="quantity" type="number" min="1" max="10" value="1" inputmode="numeric" class="h-full min-w-0 flex-1 border-0 bg-transparent text-center text-sm focus:outline-none" aria-label="Cantidad de unidades">
+                <button type="button" id="quantity-plus" class="focus-ring h-full w-10 text-lg" aria-label="Aumentar cantidad">+</button>
+              </div>
+            </div>
+
+            <button id="add-to-cart" type="submit" class="focus-ring mt-7 w-full bg-[#67745d] px-6 py-4 text-xs font-medium uppercase tracking-[.16em] text-white transition hover:bg-[#52604a]">Añadir al carrito</button>
+            <p id="form-status" class="mt-3 min-h-5 text-center text-xs text-[#52604a]" role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="mt-8 grid grid-cols-2 gap-3 border-y border-[#e6e3dc] py-4 text-xs text-[#676960]"><p>Envío gratuito desde 100 €</p><p>Devoluciones sencillas en 30 días</p></div>
+        </div>
+      </section>
+
+      <section class="mt-16 border-t border-[#e6e3dc] py-10 sm:mt-20 sm:py-14" aria-labelledby="description-title">
+        <div class="grid gap-5 sm:grid-cols-3 sm:gap-10">
+          <div><p class="text-[10px] font-medium uppercase tracking-[.2em] text-[#67745d]">Hecho para durar</p><h2 id="description-title" class="font-serif mt-3 text-2xl">Detalles de la prenda</h2></div>
+          <div class="sm:col-span-2"><p id="product-description" class="text-sm leading-7 text-[#676960]">Confeccionada en lino de tacto suave, esta camisa combina una silueta relajada con un acabado cuidado. Llévala por dentro o abierta sobre una camiseta para crear capas ligeras y naturales.</p>
+            <dl class="mt-6 grid gap-4 border-t border-[#e6e3dc] pt-5 text-sm sm:grid-cols-2"><div><dt class="text-xs uppercase tracking-[.12em] text-[#73746d]">Composición</dt><dd id="product-material" class="mt-2">100 % lino europeo</dd></div><div><dt class="text-xs uppercase tracking-[.12em] text-[#73746d]">Cuidado</dt><dd class="mt-2">Lavar en frío con prendas similares. Secar al aire.</dd></div></dl>
+          </div>
+        </div>
+      </section>
+
+      <p id="not-found" class="mx-auto hidden max-w-xl py-20 text-center" role="alert"><span class="font-serif block text-3xl">No encontramos esa prenda</span><span class="mt-3 block text-sm text-[#676960]">Puede que el enlace haya cambiado o que el producto ya no esté disponible.</span><a href="catalogo.html" class="focus-ring mt-6 inline-block bg-[#67745d] px-6 py-3 text-xs uppercase tracking-[.14em] text-white">Volver a la colección</a></p>
+    </main>
+
+    <div id="site-footer" data-partial="partials/footer.html"></div>
+    <script>
+      const products = {
+        'camisa-lino': { name:'Camisa Lino', code:'SND-CAM-001', category:'Camisas y tops', color:'Blanco natural', price:89, sizes:['S','M','L','XL'], image:'photo-1598554747436-c9293d6a588f', alt:'Camisa Lino blanca de lino de corte relajado', material:'100 % lino europeo', description:'Confeccionada en lino de tacto suave, esta camisa combina una silueta relajada con un acabado cuidado. Llévala por dentro o abierta sobre una camiseta para crear capas ligeras y naturales.' },
+        'abrigo-siena': { name:'Abrigo Siena', code:'SND-ABR-002', category:'Abrigos', color:'Camel', price:189, sizes:['S','M','L'], image:'photo-1539109136881-3be0616acf4b', alt:'Abrigo largo Siena en tono camel', material:'70 % lana reciclada, 30 % poliéster reciclado', description:'Un abrigo de líneas limpias y corte envolvente que suma calidez sin perder ligereza. Su tono camel combina fácilmente con los esenciales de tu armario.' },
+        'jersey-alba': { name:'Jersey Alba', code:'SND-PUN-003', category:'Punto', color:'Avena', price:119, sizes:['S','M','L','XL'], image:'photo-1576566588028-4147f3842f27', alt:'Jersey de punto Alba en color avena', material:'80 % algodón orgánico, 20 % lana', description:'Punto suave y transpirable con una silueta cómoda para todos los días. Un básico cálido en tono avena, fácil de combinar durante todo el año.' },
+        'pantalon-tierra': { name:'Pantalón Tierra', code:'SND-PAN-004', category:'Pantalones', color:'Arena', price:99, sizes:['S','M','L','XL'], image:'photo-1506629905607-d9b297d42e59', alt:'Pantalón recto Tierra en tono natural', material:'55 % lino, 45 % algodón orgánico', description:'Pantalón de corte recto y caída natural, diseñado para moverse contigo. El tejido ligero y la cintura cómoda hacen de esta pieza un esencial versátil.' },
+        'top-brisa': { name:'Top Brisa', code:'SND-TOP-005', category:'Camisas y tops', color:'Crudo', price:69, sizes:['S','M','L'], image:'photo-1551163943-3f6a855d1153', alt:'Top de algodón Brisa en tono crudo', material:'100 % algodón orgánico', description:'Un top ligero y sencillo con un tacto agradable sobre la piel. Su diseño atemporal funciona solo en los días cálidos o como primera capa.' },
+        'cardigan-nube': { name:'Cárdigan Nube', code:'SND-PUN-006', category:'Punto', color:'Marfil', price:129, sizes:['S','M','L','XL'], image:'photo-1620799140408-edc6dcb6d633', alt:'Cárdigan de punto Nube en tono claro', material:'70 % algodón orgánico, 30 % lana', description:'Una capa de punto suave y acogedora, con un corte relajado que acompaña sin pesar. El tono marfil aporta luz y combina con toda la colección.' },
+        'pantalon-olmo': { name:'Pantalón Olmo', code:'SND-PAN-007', category:'Pantalones', color:'Oliva', price:109, sizes:['S','M','L'], image:'photo-1594633312681-425c7b97ccd1', alt:'Pantalón Olmo de corte recto en tono oliva', material:'97 % algodón orgánico, 3 % elastano', description:'Pantalón de inspiración utilitaria con una silueta recta y cómoda. El tono oliva y su tejido resistente lo convierten en una pieza fácil de llevar.' },
+        'chaqueta-campo': { name:'Chaqueta Campo', code:'SND-ABR-008', category:'Abrigos', color:'Oliva', price:159, sizes:['S','M','L','XL'], image:'photo-1548624149-f2d5d9a2c8f2', alt:'Chaqueta ligera Campo en color verde oliva', material:'100 % algodón orgánico', description:'Chaqueta ligera de líneas funcionales y acabado cuidado. Una capa versátil para los días de entretiempo, confeccionada en algodón resistente.' },
+        'camisa-nube': { name:'Camisa Nube', code:'SND-CAM-009', category:'Camisas y tops', color:'Blanco', price:79, sizes:['S','M','L','XL'], image:'photo-1596755094514-f87e34085b2c', alt:'Camisa Nube de algodón en color blanco', material:'100 % algodón orgánico', description:'Una camisa de algodón fresca y ligera con una silueta relajada. Un fondo de armario sencillo para llevar abotonada o abierta en capas.' },
+        'jersey-bruma': { name:'Jersey Bruma', code:'SND-PUN-010', category:'Punto', color:'Gris piedra', price:99, sizes:['S','M','L'], image:'photo-1618354691373-d851c5c3a990', alt:'Jersey Bruma de punto fino en tono gris', material:'80 % algodón orgánico, 20 % lana', description:'Punto fino de tacto agradable y corte fácil. Su tono gris piedra aporta calma y combina con prendas claras u oscuras.' },
+        'falda-serena': { name:'Falda Serena', code:'SND-FAL-011', category:'Pantalones', color:'Arena', price:89, sizes:['S','M','L','XL'], image:'photo-1583496661160-fb5886a0aaaa', alt:'Falda Serena de caída fluida en beige', material:'55 % lino, 45 % viscosa responsable', description:'Falda de caída fluida que acompaña el movimiento con naturalidad. Su tono arena y su diseño limpio la hacen perfecta para combinar temporada tras temporada.' },
+        'sobrecamisa-norte': { name:'Sobrecamisa Norte', code:'SND-ABR-012', category:'Abrigos', color:'Piedra', price:139, sizes:['S','M','L'], image:'photo-1591047139829-d91aecb6caea', alt:'Sobrecamisa Norte estructurada en tono neutro', material:'100 % algodón orgánico', description:'Una sobrecamisa estructurada pero ligera, pensada para llevar como capa exterior o sobre tus prendas favoritas. Acabado natural y fácil de combinar.' },
+        'blusa-alba': { name:'Blusa Alba', code:'SND-CAM-013', category:'Camisas y tops', color:'Marfil', price:75, sizes:['S','M','L','XL'], image:'photo-1564257577-6e3f9cd0d5a3', alt:'Blusa Alba ligera en tono claro', material:'100 % algodón orgánico', description:'Blusa ligera de silueta fluida y tacto suave. Un diseño sencillo que aporta frescura y puede acompañarte del día a la noche.' },
+        'abrigo-prado': { name:'Abrigo Prado', code:'SND-ABR-014', category:'Abrigos', color:'Piedra', price:179, sizes:['S','M','L','XL'], image:'photo-1544923246-77307dd654cb', alt:'Abrigo Prado de corte largo en tono neutro', material:'70 % lana reciclada, 30 % poliéster reciclado', description:'Una silueta larga y depurada que aporta abrigo y estructura. Su tono piedra facilita las combinaciones y trasciende las temporadas.' },
+        'jersey-oliva': { name:'Jersey Oliva', code:'SND-PUN-015', category:'Punto', color:'Oliva', price:105, sizes:['S','M','L'], image:'photo-1618354691373-d851c5c3a990', alt:'Jersey de punto Oliva en tono verde suave', material:'80 % algodón orgánico, 20 % lana', description:'Jersey de punto suave en un tono verde natural. Una capa cómoda y versátil con una silueta pensada para el uso diario.' },
+        'pantalon-arena': { name:'Pantalón Arena', code:'SND-PAN-016', category:'Pantalones', color:'Arena', price:95, sizes:['S','M','L','XL'], image:'photo-1594633312681-425c7b97ccd1', alt:'Pantalón Arena de corte recto y tejido fluido', material:'55 % lino, 45 % algodón orgánico', description:'Pantalón de corte recto con tejido fluido y ligero. Un esencial en tono arena que combina comodidad y una silueta atemporal.' },
+        'camisa-horizonte': { name:'Camisa Horizonte', code:'SND-CAM-017', category:'Camisas y tops', color:'Azul humo', price:82, sizes:['S','M','L'], image:'photo-1596755094514-f87e34085b2c', alt:'Camisa Horizonte de algodón con silueta relajada', material:'100 % algodón orgánico', description:'Camisa de algodón suave con un corte cómodo y versátil. El tono azul humo aporta un detalle sutil a tus conjuntos cotidianos.' },
+        'cardigan-bosque': { name:'Cárdigan Bosque', code:'SND-PUN-018', category:'Punto', color:'Salvia', price:115, sizes:['S','M','L','XL'], image:'photo-1620799140408-edc6dcb6d633', alt:'Cárdigan Bosque de punto suave', material:'70 % algodón orgánico, 30 % lana', description:'Punto acogedor en un tono salvia inspirado en la naturaleza. Una capa fácil de sumar a tus básicos durante todo el año.' },
+        'falda-horizonte': { name:'Falda Horizonte', code:'SND-FAL-019', category:'Pantalones', color:'Topo', price:92, sizes:['S','M','L','XL'], image:'photo-1583496661160-fb5886a0aaaa', alt:'Falda Horizonte de línea fluida en color neutro', material:'55 % lino, 45 % viscosa responsable', description:'Falda fluida de líneas sencillas y tono topo. Su caída ligera permite crear conjuntos cómodos y elegantes con muy poco.' },
+        'chaqueta-rio': { name:'Chaqueta Río', code:'SND-ABR-020', category:'Abrigos', color:'Verde seco', price:149, sizes:['S','M','L'], image:'photo-1548624149-f2d5d9a2c8f2', alt:'Chaqueta Río ligera de corte clásico', material:'100 % algodón orgánico', description:'Chaqueta ligera de corte clásico y tacto natural. Diseñada como capa de entretiempo, con un color verde seco fácil de combinar.' }
+      };
+
+      const money = value => `${value} €`;
+      const currentId = new URLSearchParams(window.location.search).get('item') || 'camisa-lino';
+      const product = products[currentId];
+      const detail = document.getElementById('product-detail');
+      const notFound = document.getElementById('not-found');
+      let selectedSize = '';
+
+      if (!product) {
+        detail.hidden = true;
+        document.querySelector('[aria-label="Ruta de navegación"]').hidden = true;
+        document.querySelector('[aria-labelledby="description-title"]').hidden = true;
+        notFound.classList.remove('hidden');
+        document.title = 'Prenda no encontrada | SENDA';
+      } else {
+        document.title = `${product.name} — SENDA | Moda consciente`;
+        document.querySelector('meta[name="description"]').content = `${product.name} en ${product.color}: ${product.description}`;
+        document.querySelector('meta[property="og:title"]').content = `${product.name} | SENDA`;
+        document.querySelector('meta[property="og:description"]').content = product.description;
+        document.getElementById('breadcrumb-name').textContent = product.name;
+        document.getElementById('product-category').textContent = `Esenciales · ${product.category}`;
+        document.getElementById('product-name').textContent = product.name;
+        document.getElementById('product-code').textContent = `Código: ${product.code}`;
+        document.getElementById('product-price').textContent = money(product.price);
+        document.getElementById('product-color').textContent = `Color: ${product.color}`;
+        document.getElementById('product-description').textContent = product.description;
+        document.getElementById('product-material').textContent = product.material;
+        const image = document.getElementById('product-image');
+        image.src = `https://images.unsplash.com/${product.image}?auto=format&fit=crop&w=1200&q=90`;
+        image.alt = product.alt;
+        document.querySelectorAll('.size-option').forEach(button => {
+          if (!product.sizes.includes(button.dataset.size)) {
+            button.disabled = true;
+            button.setAttribute('aria-disabled', 'true');
+            button.classList.add('cursor-not-allowed', 'opacity-35', 'line-through');
+            button.classList.remove('hover:border-[#67745d]');
+          }
+        });
+      }
+
+      document.querySelectorAll('.size-option').forEach(button => button.addEventListener('click', () => {
+        if (button.disabled) return;
+        selectedSize = button.dataset.size;
+        document.querySelectorAll('.size-option').forEach(option => {
+          const selected = option === button;
+          option.setAttribute('aria-pressed', String(selected));
+          option.classList.toggle('border-[#67745d]', selected);
+          option.classList.toggle('bg-[#67745d]', selected);
+          option.classList.toggle('text-white', selected);
+        });
+        document.getElementById('size-error').hidden = true;
+      }));
+
+      const quantity = document.getElementById('quantity');
+      function setQuantity(value) {
+        const parsed = Number.parseInt(value, 10);
+        quantity.value = String(Number.isFinite(parsed) ? Math.min(10, Math.max(1, parsed)) : 1);
+      }
+      quantity.addEventListener('change', () => setQuantity(quantity.value));
+      quantity.addEventListener('input', () => {
+        if (quantity.value !== '') setQuantity(quantity.value);
+      });
+      document.getElementById('quantity-minus').addEventListener('click', () => setQuantity(Number(quantity.value) - 1));
+      document.getElementById('quantity-plus').addEventListener('click', () => setQuantity(Number(quantity.value) + 1));
+
+      document.getElementById('product-form').addEventListener('submit', event => {
+        event.preventDefault();
+        const sizeError = document.getElementById('size-error');
+        const sizeUnavailable = document.getElementById('size-unavailable');
+        const status = document.getElementById('form-status');
+        if (!product) return;
+        if (!selectedSize) {
+          sizeError.hidden = false;
+          document.querySelector('#size-options .size-option:not(:disabled)')?.focus();
+          status.textContent = '';
+          return;
+        }
+        const qty = Number.parseInt(quantity.value, 10);
+        if (!Number.isFinite(qty) || qty < 1 || qty > 10) {
+          quantity.setAttribute('aria-invalid', 'true');
+          quantity.focus();
+          return;
+        }
+        quantity.removeAttribute('aria-invalid');
+        sizeUnavailable.hidden = true;
+        let cart = [];
+        try {
+          const stored = JSON.parse(localStorage.getItem('senda-cart') || '[]');
+          cart = Array.isArray(stored) ? stored : [];
+        } catch (error) { cart = []; }
+        const existing = cart.find(item => item.id === currentId && item.size === selectedSize);
+        if (existing) existing.qty = (Number(existing.qty) || 0) + qty;
+        else cart.push({ id:currentId, name:product.name, price:product.price, image:`https://images.unsplash.com/${product.image}?auto=format&fit=crop&w=300&q=70`, size:selectedSize, qty });
+        try {
+          localStorage.setItem('senda-cart', JSON.stringify(cart));
+        } catch (error) {
+          status.textContent = 'No se pudo guardar la bolsa en este navegador. Comprueba el almacenamiento disponible.';
+          return;
+        }
+        const count = cart.reduce((total, item) => total + (Number(item.qty) || 0), 0);
+        document.querySelectorAll('[data-cart-count]').forEach(node => node.textContent = count);
+        status.textContent = `${qty} ${qty === 1 ? 'unidad añadida' : 'unidades añadidas'} de ${product.name}, talla ${selectedSize}.`;
+      });
+
+      async function loadPartials() {
+        await Promise.all(Array.from(document.querySelectorAll('[data-partial]'), async slot => {
+          try {
+            const response = await fetch(slot.dataset.partial);
+            if (!response.ok) throw new Error(`No se pudo cargar ${slot.dataset.partial}`);
+            slot.innerHTML = await response.text();
+          } catch (error) {
+            console.error(error);
+          }
+        }));
+        document.querySelectorAll('[data-year]').forEach(node => node.textContent = new Date().getFullYear());
+        const menuButton = document.querySelector('[data-menu-button]');
+        const mobileMenu = document.querySelector('[data-mobile-menu]');
+        if (menuButton && mobileMenu) menuButton.addEventListener('click', () => {
+          const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+          menuButton.setAttribute('aria-expanded', String(!isOpen));
+          menuButton.setAttribute('aria-label', isOpen ? 'Abrir menú' : 'Cerrar menú');
+          mobileMenu.classList.toggle('hidden', isOpen);
+        });
+        try {
+          const cart = JSON.parse(localStorage.getItem('senda-cart') || '[]');
+          const count = Array.isArray(cart) ? cart.reduce((total, item) => total + (Number(item.qty) || 0), 0) : 0;
+          document.querySelectorAll('[data-cart-count]').forEach(node => node.textContent = count);
+        } catch (error) {
+          document.querySelectorAll('[data-cart-count]').forEach(node => node.textContent = '0');
+        }
+      }
+      loadPartials();
+    </script>
+  </body>
+</html>
