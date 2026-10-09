@@ -1,41 +1,62 @@
-# HTML Hello
+# SENDA — Moda consciente
 
-The most basic boilerplate for any 4Geeks Academy student, start your very first website from scratch.
+SENDA es un prototipo académico de tienda de ropa online. Incluye portada, catálogo, fichas de producto, carrito y checkout. Está construido con HTML, Tailwind CSS v4 mediante CDN y JavaScript vanilla; no necesita un proceso de compilación.
 
-> There is a video tutorial on [how to use this template to create your very first website here](https://youtu.be/dfbDCMu_p-0).
+> **Prototipo:** el checkout simula la confirmación del pedido. No procesa pagos reales.
 
-## What to do next?
+## Ejecutar localmente
 
-Create an `index.html` file with the [basic HTML structure](http://4geeks.com/lesson/what-is-html-learn-html#page-structure) and see it live by running a web-server using the following command:
+Requisitos: Python 3, Flask y conexión a internet para cargar Tailwind y las imágenes alojadas en Unsplash.
+
+Desde la raíz del proyecto:
 
 ```bash
-$ pip3 install flask && python3 server.py
+python3 -m pip install flask
+python3 server.py
 ```
 
-- You can create as many HTML files as you want.
-- You can also create CSS files and import them into your website using a `<link>` tag placed between the `<head></head>` tags, like this:
+Abre [http://localhost:3000](http://localhost:3000). Usa el servidor Flask en lugar de abrir `index.html` directamente, ya que las páginas cargan la navegación y el pie desde parciales.
 
-```html
-<head>
-  ...
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  ...
-</head>
+## Secciones
+
+- `index.html`: portada y productos destacados.
+- `catalogo.html`: catálogo, filtros y ordenación.
+- `producto.html`: detalle, selección de talla y cantidad, y añadir a la bolsa.
+- `carrito.html`: consulta y edición de los artículos elegidos.
+- `checkout.html`: datos de entrega y confirmación de compra de prueba. La compra vacía el carrito.
+- `partials/`: header y footer compartidos.
+- `image-fallback.js`: reemplaza imágenes de producto que fallen por un aviso «SIN STOCK»; la imagen de portada tiene un fondo alternativo.
+- `public/image-performance/pagespeed-result.png.png`: captura del resultado de rendimiento.
+
+El carrito se guarda en `localStorage` con la clave `senda-cart`.
+
+## Tecnologías y pautas
+
+- HTML semántico y accesible.
+- Tailwind CSS v4 por CDN, más estilos CSS puntuales.
+- JavaScript vanilla.
+- Servidor Flask existente para desarrollo local.
+
+Consulta `AGENTS.md` antes de contribuir. No se usan React, otros frameworks de frontend ni herramientas de build.
+
+## Contribuir desde un fork
+
+El repositorio original configurado para este proyecto es [`4GeeksAcademy/expert-sniffle-equipo1dinamita`](https://github.com/4GeeksAcademy/expert-sniffle-equipo1dinamita). En el clon del fork, `origin` debe apuntar a tu fork y `upstream` al repositorio original.
+
+```bash
+git remote -v
+git fetch upstream
+git switch main
+git pull --ff-only upstream main
+git switch -c feature/nombre-del-cambio
 ```
 
-- If you want to use Tailwind CSS, add it optionally via the official Tailwind CSS v4 CDN inside the same `<head>`:
+Implementa y prueba el cambio localmente, luego publícalo en tu fork y abre un Pull Request hacia `main` del repositorio original:
 
-```html
-<head>
-  ...
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  ...
-</head>
+```bash
+git add <archivos>
+git commit -m "Describe el cambio"
+git push -u origin feature/nombre-del-cambio
 ```
 
-### Contributors
-
-This template was built as part of the [Full Stack Developer course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer) at [4Geeks Academy Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and [many other contributors](https://github.com/4GeeksAcademy/html-hello/graphs/contributors).
-
-You can find other templates and resources like this at the [school's GitHub page](https://github.com/4geeksacademy/).
+No subas directamente a `upstream/main`; integra el trabajo mediante Pull Request. Una vez fusionado, el equipo puede actualizar su copia con `git pull --ff-only upstream main`.
