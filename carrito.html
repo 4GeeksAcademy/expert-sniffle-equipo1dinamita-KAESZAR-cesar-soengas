@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Revisa tu bolsa SENDA, actualiza las cantidades y consulta el resumen de tu pedido antes de continuar." />
+    <meta name="theme-color" content="#faf9f6" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content="Tu bolsa de compra | SENDA" />
+    <meta property="og:description" content="Prendas elegidas con intención, listas para acompañarte." />
+    <title>Tu bolsa — SENDA | Moda consciente</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      :root { color-scheme: light; }
+      html { scroll-behavior: smooth; }
+      body { background: #faf9f6; color: #20231f; font-family: Arial, Helvetica, sans-serif; }
+      .font-serif { font-family: Georgia, 'Times New Roman', serif; }
+      .focus-ring:focus-visible { outline: 2px solid #67745d; outline-offset: 4px; }
+      [hidden] { display: none !important; }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+    </style>
+  </head>
+  <body class="min-h-screen antialiased">
+    <a href="#contenido" class="focus-ring sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-white focus:px-4 focus:py-3">Saltar al contenido</a>
+    <div id="site-header" data-partial="partials/header.html"></div>
+
+    <main id="contenido" class="mx-auto max-w-7xl px-5 py-10 sm:px-8 sm:py-14 lg:py-16">
+      <nav aria-label="Ruta de navegación" class="mb-7 text-xs text-[#73746d]"><a href="index.html" class="focus-ring hover:text-[#20231f]">Inicio</a><span aria-hidden="true" class="mx-2">/</span><span aria-current="page">Tu bolsa</span></nav>
+      <header class="mb-9 flex flex-wrap items-end justify-between gap-3 border-b border-[#e6e3dc] pb-6">
+        <div><p class="text-[10px] font-medium uppercase tracking-[.22em] text-[#67745d]">Lo que has elegido</p><h1 class="font-serif mt-2 text-4xl sm:text-5xl">Tu bolsa</h1></div>
+        <p id="cart-item-count" class="text-sm text-[#676960]" aria-live="polite">3 artículos</p>
+      </header>
+
+      <div id="cart-layout" class="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-14">
+        <section aria-label="Productos en la bolsa">
+          <div class="hidden grid-cols-[minmax(0,1fr)_110px_110px] border-b border-[#e6e3dc] pb-3 text-[10px] font-semibold uppercase tracking-[.14em] text-[#73746d] md:grid"><span>Producto</span><span class="text-center">Cantidad</span><span class="text-right">Total</span></div>
+          <div id="cart-items" class="divide-y divide-[#e6e3dc]"></div>
+          <a href="catalogo.html" class="focus-ring mt-6 inline-flex items-center gap-2 text-xs underline underline-offset-4">← Seguir explorando</a>
+        </section>
+
+        <aside class="border border-[#e6e3dc] bg-white/50 p-5 sm:p-7" aria-labelledby="summary-title">
+          <h2 id="summary-title" class="font-serif text-2xl">Resumen del pedido</h2>
+          <dl class="mt-6 space-y-4 text-sm">
+            <div class="flex justify-between gap-4"><dt class="text-[#676960]">Subtotal</dt><dd id="subtotal">—</dd></div>
+            <div class="flex justify-between gap-4"><dt class="text-[#676960]">Impuestos <span id="tax-label" class="text-xs">(IVA 21 % incluido)</span></dt><dd id="tax-amount">—</dd></div>
+            <div class="flex justify-between gap-4"><dt class="text-[#676960]">Envío</dt><dd id="shipping">Gratis</dd></div>
+            <div class="flex justify-between gap-4 border-t border-[#e6e3dc] pt-4 text-base font-semibold"><dt>Total</dt><dd id="grand-total">—</dd></div>
+          </dl>
+          <p class="mt-4 text-xs leading-5 text-[#73746d]">Los impuestos se muestran desglosados y ya están incluidos en el precio. Envío gratuito en este prototipo.</p>
+          <a id="checkout-button" href="checkout.html" class="focus-ring mt-7 flex w-full items-center justify-center bg-[#67745d] px-5 py-4 text-xs font-medium uppercase tracking-[.16em] text-white transition hover:bg-[#52604a]">Comprar</a>
+          <p class="mt-4 text-center text-[10px] text-[#73746d]">Pago seguro · Devoluciones sencillas en 30 días</p>
+        </aside>
+      </div>
+
+      <section id="empty-cart" class="hidden border border-[#e6e3dc] px-6 py-14 text-center" aria-labelledby="empty-title">
+        <h2 id="empty-title" class="font-serif text-3xl">Tu bolsa está esperando</h2>
+        <p class="mt-3 text-sm text-[#676960]">Cuando encuentres algo que te guste, aparecerá aquí.</p>
+        <a href="catalogo.html" class="focus-ring mt-6 inline-block bg-[#67745d] px-6 py-3 text-xs uppercase tracking-[.14em] text-white">Descubrir la colección</a>
+      </section>
+      <p id="cart-status" class="sr-only" role="status" aria-live="polite"></p>
+    </main>
+
+    <div id="site-footer" data-partial="partials/footer.html"></div>
+
+    <script>
+      const CART_KEY = 'senda-cart';
+      const TAX_RATE = 0.21;
+      const exampleItems = [
+        { id:'camisa-lino', name:'Camisa Lino', price:89, image:'https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=240&q=75', size:'M', qty:1 },
+        { id:'jersey-alba', name:'Jersey Alba', price:119, image:'https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=240&q=75', size:'S', qty:1 },
+        { id:'pantalon-tierra', name:'Pantalón Tierra', price:99, image:'https://images.unsplash.com/photo-1506629905607-d9b297d42e59?auto=format&fit=crop&w=240&q=75', size:'L', qty:1 }
+      ];
+      const currency = new Intl.NumberFormat('es-ES', { style:'currency', currency:'EUR' });
+      const itemContainer = document.getElementById('cart-items');
+      const status = document.getElementById('cart-status');
+
+      function readCart() {
+        try {
+          const value = JSON.parse(localStorage.getItem(CART_KEY) || 'null');
+          if (Array.isArray(value)) return value;
+        } catch (error) { console.warn('No se pudo leer la bolsa guardada.', error); }
+        return null;
+      }
+
+      function saveCart(cart) {
+        try {
+          localStorage.setItem(CART_KEY, JSON.stringify(cart));
+          return true;
+        } catch (error) {
+          status.textContent = 'No se pudo guardar el cambio en este navegador.';
+          return false;
+        }
+      }
+
+      function renderCart() {
+        const cart = readCart() || exampleItems.map(item => ({ ...item }));
+        const safeCart = cart.map((item, sourceIndex) => ({ item, sourceIndex }))
+          .filter(entry => entry.item && entry.item.id && Number(entry.item.price) >= 0)
+          .map(({ item, sourceIndex }) => ({ ...item, sourceIndex, price:Number(item.price), qty:Math.min(10, Math.max(1, Number.parseInt(item.qty, 10) || 1)), size:String(item.size || 'M') }));
+        itemContainer.replaceChildren();
+        let subtotal = 0;
+        let units = 0;
+
+        safeCart.forEach((item, index) => {
+          const lineTotal = item.price * item.qty;
+          subtotal += lineTotal;
+          units += item.qty;
+
+          const row = document.createElement('article');
+          row.className = 'grid gap-4 py-5 sm:grid-cols-[96px_minmax(0,1fr)] md:grid-cols-[minmax(0,1fr)_110px_110px] md:items-center';
+          const productCell = document.createElement('div');
+          productCell.className = 'flex min-w-0 gap-4';
+          const image = document.createElement('img');
+          image.src = item.image || 'https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&w=240&q=75';
+          image.alt = item.name;
+          image.loading = 'lazy';
+          image.className = 'aspect-[3/4] w-24 shrink-0 bg-[#ebe8e1] object-cover';
+          const details = document.createElement('div');
+          details.className = 'min-w-0 py-1';
+          const name = document.createElement('h2');
+          name.className = 'text-sm font-medium';
+          name.textContent = item.name;
+          const meta = document.createElement('p');
+          meta.className = 'mt-2 text-xs text-[#73746d]';
+          meta.textContent = `Talla: ${item.size}`;
+          const unitPrice = document.createElement('p');
+          unitPrice.className = 'mt-2 text-xs text-[#676960]';
+          unitPrice.textContent = `Precio unitario: ${currency.format(item.price)}`;
+          const remove = document.createElement('button');
+          remove.type = 'button';
+          remove.className = 'focus-ring mt-3 text-xs text-[#73746d] underline underline-offset-4 hover:text-[#20231f]';
+          remove.textContent = 'Eliminar';
+          remove.setAttribute('aria-label', `Eliminar ${item.name} talla ${item.size}`);
+          remove.addEventListener('click', () => {
+            const latest = readCart();
+            const source = latest || safeCart;
+            source.splice(item.sourceIndex, 1);
+            if (saveCart(source)) { status.textContent = `${item.name} eliminado de la bolsa.`; renderCart(); }
+          });
+          details.append(name, meta, unitPrice, remove);
+          productCell.append(image, details);
+
+          const quantityCell = document.createElement('div');
+          quantityCell.className = 'flex items-center justify-between gap-3 sm:pl-28 md:justify-center md:pl-0';
+          const quantityLabel = document.createElement('label');
+          quantityLabel.className = 'text-xs text-[#73746d] md:sr-only';
+          quantityLabel.htmlFor = `quantity-${index}`;
+          quantityLabel.textContent = 'Cantidad';
+          const quantityControls = document.createElement('div');
+          quantityControls.className = 'flex h-9 items-center border border-[#d7d6ce]';
+          const minus = document.createElement('button');
+          minus.type = 'button'; minus.className = 'focus-ring h-full w-8'; minus.textContent = '−';
+          minus.setAttribute('aria-label', `Reducir cantidad de ${item.name}`);
+          const quantityInput = document.createElement('input');
+          quantityInput.id = `quantity-${index}`; quantityInput.type = 'number'; quantityInput.min = '1'; quantityInput.max = '10'; quantityInput.value = String(item.qty); quantityInput.inputMode = 'numeric';
+          quantityInput.className = 'h-full w-10 border-0 bg-transparent text-center text-xs focus:outline-none';
+          quantityInput.setAttribute('aria-label', `Cantidad de ${item.name}`);
+          const plus = document.createElement('button');
+          plus.type = 'button'; plus.className = 'focus-ring h-full w-8'; plus.textContent = '+';
+          plus.setAttribute('aria-label', `Aumentar cantidad de ${item.name}`);
+          const changeQuantity = value => {
+            const latest = readCart();
+            const source = latest || safeCart;
+            const target = source[item.sourceIndex];
+            if (!target) return;
+            const parsed = Number.parseInt(value, 10);
+            target.qty = Math.min(10, Math.max(1, Number.isFinite(parsed) ? parsed : 1));
+            if (saveCart(source)) renderCart();
+          };
+          minus.addEventListener('click', () => changeQuantity(item.qty - 1));
+          plus.addEventListener('click', () => changeQuantity(item.qty + 1));
+          quantityInput.addEventListener('change', () => changeQuantity(quantityInput.value));
+          quantityControls.append(minus, quantityInput, plus);
+          quantityCell.append(quantityLabel, quantityControls);
+
+          const totalCell = document.createElement('p');
+          totalCell.className = 'flex justify-between text-sm font-medium sm:pl-28 md:justify-end md:pl-0';
+          const totalLabel = document.createElement('span');
+          totalLabel.className = 'text-xs font-normal text-[#73746d] md:sr-only';
+          totalLabel.textContent = 'Total línea';
+          const totalValue = document.createElement('span');
+          totalValue.textContent = currency.format(lineTotal);
+          totalCell.append(totalLabel, totalValue);
+          row.append(productCell, quantityCell, totalCell);
+          itemContainer.append(row);
+        });
+
+        const taxIncluded = subtotal * TAX_RATE / (1 + TAX_RATE);
+        document.getElementById('subtotal').textContent = currency.format(subtotal);
+        document.getElementById('tax-amount').textContent = currency.format(taxIncluded);
+        document.getElementById('grand-total').textContent = currency.format(subtotal);
+        document.getElementById('cart-item-count').textContent = `${units} ${units === 1 ? 'artículo' : 'artículos'}`;
+        document.querySelectorAll('[data-cart-count]').forEach(node => node.textContent = String(units));
+        const isEmpty = safeCart.length === 0;
+        document.getElementById('cart-layout').hidden = isEmpty;
+        document.getElementById('empty-cart').classList.toggle('hidden', !isEmpty);
+        if (isEmpty) document.getElementById('cart-item-count').textContent = '0 artículos';
+      }
+
+      document.getElementById('checkout-button').addEventListener('click', event => {
+        const cart = readCart() || exampleItems;
+        if (!cart.length) {
+          event.preventDefault();
+          status.textContent = 'Añade algún producto a la bolsa antes de continuar.';
+        }
+      });
+
+      function seedExampleCart() {
+        try {
+          if (localStorage.getItem(CART_KEY) === null) {
+            localStorage.setItem(CART_KEY, JSON.stringify(exampleItems));
+          }
+        } catch (error) { console.warn('Se mostrarán productos de ejemplo sin guardar la bolsa.', error); }
+      }
+
+      async function loadPartials() {
+        await Promise.all(Array.from(document.querySelectorAll('[data-partial]'), async slot => {
+          try {
+            const response = await fetch(slot.dataset.partial);
+            if (!response.ok) throw new Error(`No se pudo cargar ${slot.dataset.partial}`);
+            slot.innerHTML = await response.text();
+          } catch (error) { console.error(error); }
+        }));
+        document.querySelectorAll('[data-year]').forEach(node => node.textContent = new Date().getFullYear());
+        const menuButton = document.querySelector('[data-menu-button]');
+        const mobileMenu = document.querySelector('[data-mobile-menu]');
+        if (menuButton && mobileMenu) menuButton.addEventListener('click', () => {
+          const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+          menuButton.setAttribute('aria-expanded', String(!isOpen));
+          menuButton.setAttribute('aria-label', isOpen ? 'Abrir menú' : 'Cerrar menú');
+          mobileMenu.classList.toggle('hidden', isOpen);
+        });
+        renderCart();
+      }
+      seedExampleCart();
+      renderCart();
+      loadPartials();
+    </script>
+  </body>
+</html>
