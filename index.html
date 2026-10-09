@@ -19,8 +19,10 @@
       .font-serif { font-family: Georgia, 'Times New Roman', serif; }
       .focus-ring:focus-visible { outline: 2px solid #67745d; outline-offset: 4px; }
       .hero-image { background-image: linear-gradient(90deg, rgba(24,27,23,.59), rgba(24,27,23,.05)), url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=2200&q=88'); background-size: cover; background-position: center 43%; }
+      .hero-image.image-background-unavailable { background-image: linear-gradient(135deg, #67745d, #20231f); }
       @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
     </style>
+    <script src="image-fallback.js"></script>
     <script type="application/ld+json">
       {"@context":"https://schema.org","@type":"ClothingStore","name":"Senda","description":"Moda consciente, prendas esenciales y diseño atemporal.","priceRange":"€€"}
     </script>
@@ -31,7 +33,7 @@
     <div id="site-header" data-partial="partials/header.html"></div>
 
     <main id="contenido">
-      <section aria-labelledby="hero-title" class="hero-image relative flex min-h-[570px] items-center text-white sm:min-h-[650px] lg:min-h-[710px]">
+      <section aria-labelledby="hero-title" class="hero-image relative flex min-h-[570px] items-center text-white sm:min-h-[650px] lg:min-h-[710px]" data-image-background="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=2200&q=88">
         <div class="mx-auto w-full max-w-7xl px-6 py-20 sm:px-10 lg:px-12">
           <p class="mb-5 text-[10px] font-medium uppercase tracking-[.28em] sm:text-xs">Nueva colección · otoño / invierno</p>
           <h1 id="hero-title" class="font-serif max-w-2xl text-5xl leading-[1.04] sm:text-6xl lg:text-7xl">Menos, pero<br class="hidden sm:block"> mejor.</h1>
